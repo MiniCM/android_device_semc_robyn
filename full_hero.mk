@@ -50,6 +50,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=45
 
+# Configure agps cell location.  Must have Eclair libhtc_ril.so.
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.def.agps.mode=1
+    ro.ril.def.agps.feature=1
+
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
 PRODUCT_PROPERTY_OVERRIDES += \
