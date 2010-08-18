@@ -32,10 +32,9 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := true
 
 # ARMv6-compatible processor rev 5 (v6l)
-TARGET_CPU_ABI := armeabi-v6l
+TARGET_CPU_ABI := armeabi-v6j
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv5te
-TARGET_CPU_ABI := armeabi
 
 # Explicitly enable JIT for dalvik and browser
 WITH_JIT := true
