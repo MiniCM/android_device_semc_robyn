@@ -43,6 +43,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
+# hero specific gps.conf
+
+PRODUCT_COPY_FILES += \
+    device/htc/heroc/gps.conf:system/etc/gps.conf
+
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
 
@@ -53,8 +58,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
 # but none are in range.
+#
+# Increase scan interval for Hero.
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=45
+
+# Configure agps cell location.  Must have Eclair libhtc_ril.so.
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.def.agps.mode=1
+    ro.ril.def.agps.feature=1
 
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
