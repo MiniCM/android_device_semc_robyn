@@ -55,9 +55,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=160
     
-# Disable JIT by default
+# Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:fast
+    dalvik.vm.execution-mode=int:jit \
+    dalvik.vm.heapsize=32m
     
 # media configuration xml file
 PRODUCT_COPY_FILES += \
