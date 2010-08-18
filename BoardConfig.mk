@@ -37,6 +37,10 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv5te
 TARGET_CPU_ABI := armeabi
 
+# Explicitly enable JIT for dalvik and browser
+WITH_JIT := true
+ENABLE_JSC_JIT:=true
+
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libWifiApi
