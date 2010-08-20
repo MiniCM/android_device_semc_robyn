@@ -27,6 +27,8 @@
     -->
     <bool name="config_sf_limitedAlpha">true</bool>
 
+    <bool name="config_hspa_data_distinguishable">false</bool>
+
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
