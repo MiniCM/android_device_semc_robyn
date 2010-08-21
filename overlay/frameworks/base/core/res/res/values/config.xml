@@ -27,7 +27,7 @@
     -->
     <bool name="config_sf_limitedAlpha">true</bool>
 
-    <bool name="config_hspa_data_distinguishable">false</bool>
+    <bool name="config_hspa_data_distinguishable">true</bool>
 
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
@@ -160,5 +160,9 @@
     <!-- Boolean indicating if we require the use of DUN on mobile for tethering -->
     <bool translatable="false" name="config_tether_dun_required">false</bool>
 
-    
+    <!--
+     Boolean indicating if we require the use of DUN on mobile for tethering 
+    -->
+    <bool translatable="false" name="config_tether_dun_required">false</bool>
+
 </resources>
