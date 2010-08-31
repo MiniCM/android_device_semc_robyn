@@ -91,7 +91,7 @@ libaudiopolicy.so       0xA9A00000 # [~1M]
 libaudiopolicygeneric.so 0xA9900000 # [???]
 libsoundpool.so         0xA9800000 # [~1M]
 libgps.so               0xA9700000 # [~1M] (moved for hero)
-libcamera.so			0xA9600000 # [~1M] (moved for hero)
+libcamera.so			0xA9680000 # [~1M] (moved for hero)
 liboemcamera.so			0xA9400000 # [~2M] (moved for hero)
 libmedia_jni.so         0xA9300000 # [~1M]
 libmediaplayerservice.so 0xA9200000 # [~1M]
