@@ -14,13 +14,6 @@
 # limitations under the License.
 #
 
-# Kernel Targets
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-ifeq ($(TARGET_KERNEL_CONFIG),)
-TARGET_PREBUILT_KERNEL := device/htc/hero/kernel
-endif # TARGET_KERNEL_CONFIG
-endif # TARGET_PREBUILT_KERNEL
-
 DEVICE_PACKAGE_OVERLAYS := device/htc/hero/overlay
 
 PRODUCT_PACKAGES += \
@@ -67,7 +60,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=1 \
-    ro.ril.def.agps.feature=1
+    ro.ril.def.agps.feature=1 \
+    wifi.supplicant_scan_interval=45
 
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
@@ -82,6 +76,26 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/htc/hero/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+PRODUCT_COPY_FILES += \
+    device/htc/hero/modules/rpcsec_gss_krb5.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/auth_gss/rpcsec_gss_krb5.ko \
+    device/htc/hero/modules/auth_rpcgss.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/auth_gss/auth_rpcgss.ko \
+    device/htc/hero/modules/sunrpc.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/sunrpc.ko \
+    device/htc/hero/modules/nfs.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/nfs/nfs.ko \
+    device/htc/hero/modules/fuse.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/fuse/fuse.ko \
+    device/htc/hero/modules/cifs.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/cifs/cifs.ko \
+    device/htc/hero/modules/nfs_acl.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/nfs_common/nfs_acl.ko \
+    device/htc/hero/modules/lockd.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/lockd/lockd.ko \
+    device/htc/hero/modules/ramzswap.ko:system/lib/modules/ramzswap.ko
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
