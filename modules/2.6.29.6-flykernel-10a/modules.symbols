@@ -1,0 +1,2 @@
+# Aliases for symbols, used by symbol_request().
+alias symbol:fuse_conn_init fuse

@@ -21,7 +21,7 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, device/htc/hero/device_hero_us.mk)
+$(call inherit-product, device/htc/hero/device_hero_eu.mk)
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -31,6 +31,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
+
+# Specific hero init.rc
+PRODUCT_COPY_FILES += \
+    device/htc/hero/init.rc:root/init.rc \
+    device/htc/hero/placeholder:system/sd/placeholder
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -49,8 +54,38 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Configure agps cell location.  Must have Eclair libhtc_ril.so.
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.def.agps.mode=1 \
+    ro.ril.def.agps.mode=2 \
     ro.ril.def.agps.feature=1
+
+# Some more stuff:
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.enable.a52=1 \
+    ro.ril.enable.a53=1 \
+    ro.com.google.clientidbase=android-htc \
+    ro.com.google.clientidbase.yt=android-htc \
+    ro.com.google.clientidbase.am=android-htc \
+    ro.com.google.clientidbase.vs=android-htc \
+    ro.com.google.clientidbase.gmm=android-htc \
+    ro.media.enc.file.format       = 3gp,mp4 \
+    ro.media.enc.vid.codec         = m4v,h263 \
+    ro.media.enc.vid.h263.width    = 176,352 \
+    ro.media.enc.vid.h263.height   = 144,288 \
+    ro.media.enc.vid.h263.bps      = 64000,800000 \
+    ro.media.enc.vid.h263.fps      = 1,30 \
+    ro.media.enc.vid.m4v.width     = 176,352 \
+    ro.media.enc.vid.m4v.height    = 144,288 \
+    ro.media.enc.vid.m4v.bps       = 64000,800000 \
+    ro.media.enc.vid.m4v.fps       = 1,30 \
+    ro.media.dec.aud.wma.enabled=1 \
+    ro.media.dec.vid.wmv.enabled=1 \
+    settings.display.autobacklight=1 \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-meta=true \
+    media.stagefright.enable-scan=true \
+    media.stagefright.enable-http=true \
+    keyguard.no_require_sim=true \
+    ro.setupwizard.enterprise_mode=1
 
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
@@ -59,8 +94,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     
 # Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:jit \
-    dalvik.vm.heapsize=32m
+    dalvik.vm.execution-mode=int:fast
     
 # media configuration xml file
 PRODUCT_COPY_FILES += \

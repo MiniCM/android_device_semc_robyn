@@ -14,6 +14,38 @@
 # limitations under the License.
 #
 
+# Kernel Targets
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := device/htc/hero/kernel
+else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+PRODUCT_COPY_FILES += \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.dep.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.dep.bin \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.seriomap:system/lib/modules/2.6.29.6-flykernel-10a/modules.seriomap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.symbols:system/lib/modules/2.6.29.6-flykernel-10a/modules.symbols \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.isapnpmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.isapnpmap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.dep:system/lib/modules/2.6.29.6-flykernel-10a/modules.dep \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.order:system/lib/modules/2.6.29.6-flykernel-10a/modules.order \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.symbols.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.symbols.bin \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ofmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.ofmap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.pcimap:system/lib/modules/2.6.29.6-flykernel-10a/modules.pcimap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.alias.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.alias.bin \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ieee1394map:system/lib/modules/2.6.29.6-flykernel-10a/modules.ieee1394map \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ccwmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.ccwmap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.alias:system/lib/modules/2.6.29.6-flykernel-10a/modules.alias \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/net/ipv4/ip_gre.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/net/ipv4/ip_gre.ko \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/drivers/net/wireless/tiwlan1251/wlan.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/drivers/net/wireless/tiwlan1251/wlan.ko \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/drivers/hid/hid-dummy.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/drivers/hid/hid-dummy.ko \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/fs/cifs/cifs.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/fs/cifs/cifs.ko \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/fs/fuse/fuse.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/fs/fuse/fuse.ko \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.inputmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.inputmap \
+    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.usbmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.usbmap \
+    device/htc/hero/modules/wlan.ko:system/lib/modules/wlan.ko
+
 DEVICE_PACKAGE_OVERLAYS := device/htc/hero/overlay
 
 PRODUCT_PACKAGES += \
@@ -59,9 +91,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Configure agps cell location.  Must have Eclair libhtc_ril.so.
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.def.agps.mode=1 \
-    ro.ril.def.agps.feature=1 \
-    wifi.supplicant_scan_interval=45
+    ro.ril.def.agps.mode=2 \
+    ro.ril.def.agps.feature=1
 
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
@@ -76,26 +107,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/hero/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-PRODUCT_COPY_FILES += \
-    device/htc/hero/modules/rpcsec_gss_krb5.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/auth_gss/rpcsec_gss_krb5.ko \
-    device/htc/hero/modules/auth_rpcgss.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/auth_gss/auth_rpcgss.ko \
-    device/htc/hero/modules/sunrpc.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/net/sunrpc/sunrpc.ko \
-    device/htc/hero/modules/nfs.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/nfs/nfs.ko \
-    device/htc/hero/modules/fuse.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/fuse/fuse.ko \
-    device/htc/hero/modules/cifs.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/cifs/cifs.ko \
-    device/htc/hero/modules/nfs_acl.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/nfs_common/nfs_acl.ko \
-    device/htc/hero/modules/lockd.ko:system/lib/modules/2.6.29-cyanogenmod/kernel/fs/lockd/lockd.ko \
-    device/htc/hero/modules/ramzswap.ko:system/lib/modules/ramzswap.ko
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
