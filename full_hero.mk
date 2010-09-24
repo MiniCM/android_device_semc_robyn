@@ -60,6 +60,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Some more stuff:
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.locationfeatures=1 \
+    ro.com.google.networklocation=1 \
     ro.ril.enable.a52=1 \
     ro.ril.enable.a53=1 \
     ro.com.google.clientidbase=android-htc \
@@ -109,3 +111,4 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 PRODUCT_NAME := full_hero
 PRODUCT_DEVICE := hero
 PRODUCT_MODEL := Full Android on Hero
+PRODUCT_DEFAULT_WIFI_CHANNELS := 14
