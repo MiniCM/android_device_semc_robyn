@@ -42,7 +42,6 @@ static struct light_state_t g_no_action;
 static struct light_state_t g_battery;
 static int g_haveAmberLed = 0;
 static int g_backlight = 255;
-static int g_trackball = -1;
 static int g_haveTrackballLight = 0;
 
 char const*const AMBER_LED_FILE = "/sys/class/leds/amber/brightness";
@@ -93,6 +92,10 @@ void init_globals (void) {
 	pthread_mutex_init (&g_lock, NULL);
 	g_haveTrackballLight = (access(TRACKBALL_FILE, W_OK) == 0) ? 1 : 0;
 	g_haveAmberLed = (access(AMBER_LED_FILE, W_OK) == 0) ? 1 : 0;
+	if (g_haveTrackballLight) {
+	  write_int(TRACKBALL_FILE, 3); // init track ball mode
+	  write_int(TRACKBALL_FILE, 0);
+	}
 }
 
 static int is_lit (struct light_state_t const* state) {
@@ -199,12 +202,6 @@ handle_trackball_light_locked(struct light_device_t* dev)
     LOGV("%s g_backlight = %d, mode = %d, g_attention = %d\n",
         __func__, g_backlight, mode, g_attention);
 
-    // If the value isn't changing, don't set it, because this
-    // can reset the timer on the breathing mode, which looks bad.
-    if (g_trackball == mode) {
-        return 0;
-    }
-
     return write_int(TRACKBALL_FILE, mode);
 }
 
@@ -255,8 +252,7 @@ set_light_attention(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     pthread_mutex_lock(&g_lock);
-    LOGV("set_light_attention g_trackball=%d color=0x%08x",
-            g_trackball, state->color);
+    LOGV("set_light_attention color=0x%08x", state->color);
     if (state->flashMode == LIGHT_FLASH_HARDWARE) {
         g_attention = state->flashOnMS;
     } else if (state->flashMode == LIGHT_FLASH_NONE) {
