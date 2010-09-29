@@ -96,7 +96,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     
 # Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:fast
+    dalvik.vm.execution-mode=int:jit
     
 # media configuration xml file
 PRODUCT_COPY_FILES += \
