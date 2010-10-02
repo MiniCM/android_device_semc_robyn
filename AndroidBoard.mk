@@ -48,14 +48,6 @@ LOCAL_MODULE := vold.fstab
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := wlan.ko
-LOCAL_MODULE_TAGS := user
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
 # the system properties for each device, loaded by init
 file := $(TARGET_OUT)/build.hero.prop
 ALL_PREBUILT += $(file)
