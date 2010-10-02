@@ -23,27 +23,29 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+KERNEL_NAME := 2.6.29.6-flykernel-11
+
 PRODUCT_COPY_FILES += \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.dep.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.dep.bin \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.seriomap:system/lib/modules/2.6.29.6-flykernel-10a/modules.seriomap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.symbols:system/lib/modules/2.6.29.6-flykernel-10a/modules.symbols \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.isapnpmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.isapnpmap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.dep:system/lib/modules/2.6.29.6-flykernel-10a/modules.dep \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.order:system/lib/modules/2.6.29.6-flykernel-10a/modules.order \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.symbols.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.symbols.bin \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ofmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.ofmap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.pcimap:system/lib/modules/2.6.29.6-flykernel-10a/modules.pcimap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.alias.bin:system/lib/modules/2.6.29.6-flykernel-10a/modules.alias.bin \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ieee1394map:system/lib/modules/2.6.29.6-flykernel-10a/modules.ieee1394map \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.ccwmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.ccwmap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.alias:system/lib/modules/2.6.29.6-flykernel-10a/modules.alias \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/net/ipv4/ip_gre.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/net/ipv4/ip_gre.ko \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/drivers/net/wireless/tiwlan1251/wlan.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/drivers/net/wireless/tiwlan1251/wlan.ko \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/drivers/hid/hid-dummy.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/drivers/hid/hid-dummy.ko \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/fs/cifs/cifs.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/fs/cifs/cifs.ko \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/kernel/fs/fuse/fuse.ko:system/lib/modules/2.6.29.6-flykernel-10a/kernel/fs/fuse/fuse.ko \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.inputmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.inputmap \
-    device/htc/hero/modules/2.6.29.6-flykernel-10a/modules.usbmap:system/lib/modules/2.6.29.6-flykernel-10a/modules.usbmap \
+    device/htc/hero/modules/modules.dep.bin:system/lib/modules/$(KERNEL_NAME)/modules.dep.bin \
+    device/htc/hero/modules/modules.seriomap:system/lib/modules/$(KERNEL_NAME)/modules.seriomap \
+    device/htc/hero/modules/modules.symbols:system/lib/modules/$(KERNEL_NAME)/modules.symbols \
+    device/htc/hero/modules/modules.isapnpmap:system/lib/modules/$(KERNEL_NAME)/modules.isapnpmap \
+    device/htc/hero/modules/modules.dep:system/lib/modules/$(KERNEL_NAME)/modules.dep \
+    device/htc/hero/modules/modules.order:system/lib/modules/$(KERNEL_NAME)/modules.order \
+    device/htc/hero/modules/modules.symbols.bin:system/lib/modules/$(KERNEL_NAME)/modules.symbols.bin \
+    device/htc/hero/modules/modules.ofmap:system/lib/modules/$(KERNEL_NAME)/modules.ofmap \
+    device/htc/hero/modules/modules.pcimap:system/lib/modules/$(KERNEL_NAME)/modules.pcimap \
+    device/htc/hero/modules/modules.alias.bin:system/lib/modules/$(KERNEL_NAME)/modules.alias.bin \
+    device/htc/hero/modules/modules.ieee1394map:system/lib/modules/$(KERNEL_NAME)/modules.ieee1394map \
+    device/htc/hero/modules/modules.ccwmap:system/lib/modules/$(KERNEL_NAME)/modules.ccwmap \
+    device/htc/hero/modules/modules.alias:system/lib/modules/$(KERNEL_NAME)/modules.alias \
+    device/htc/hero/modules/ip_gre.ko:system/lib/modules/$(KERNEL_NAME)/kernel/net/ipv4/ip_gre.ko \
+    device/htc/hero/modules/wlan.ko:system/lib/modules/$(KERNEL_NAME)/kernel/drivers/net/wireless/tiwlan1251/wlan.ko \
+    device/htc/hero/modules/hid-dummy.ko:system/lib/modules/$(KERNEL_NAME)/kernel/drivers/hid/hid-dummy.ko \
+    device/htc/hero/modules/cifs.ko:system/lib/modules/$(KERNEL_NAME)/kernel/fs/cifs/cifs.ko \
+    device/htc/hero/modules/fuse.ko:system/lib/modules/$(KERNEL_NAME)/kernel/fs/fuse/fuse.ko \
+    device/htc/hero/modules/modules.inputmap:system/lib/modules/$(KERNEL_NAME)/modules.inputmap \
+    device/htc/hero/modules/modules.usbmap:system/lib/modules/$(KERNEL_NAME)/modules.usbmap \
     device/htc/hero/modules/wlan.ko:system/lib/modules/wlan.ko
 
 DEVICE_PACKAGE_OVERLAYS := device/htc/hero/overlay
