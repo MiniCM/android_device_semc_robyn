@@ -124,15 +124,12 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (AMBER_BLINK_FILE, 1);
 					break;
 				case LED_GREEN:
+			        case LED_WHITE:
 					write_int (GREEN_BLINK_FILE, 1);
-					break;
-				case LED_WHITE:
-					write_int (TRACKBALL_BLINK_FILE, 1);
 					break;
 				case LED_BLANK:
 					write_int (AMBER_BLINK_FILE, 0);
 					write_int (GREEN_BLINK_FILE, 0);
-					write_int (TRACKBALL_BLINK_FILE, 0);
 					break;
 				default:
 					LOGV("set_led_state colorRGB=%08X, unknown color\n",
@@ -147,18 +144,13 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (GREEN_LED_FILE, 0);
 					break;
 				case LED_GREEN:
+			        case LED_WHITE:
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 1);
-					break;
-				case LED_WHITE:
-					write_int (AMBER_LED_FILE, 0);
-					write_int (GREEN_LED_FILE, 0);
-					write_int (TRACKBALL_FILE, 1);
 					break;
 				case LED_BLANK:
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 0);
-					write_int (TRACKBALL_FILE, 0);
 					break;
 
 			}
@@ -170,11 +162,19 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 
 }
 
-static void handle_speaker_battery_locked (struct light_device_t *dev) {
-	if (is_lit (&g_battery)) {
-		set_speaker_light_locked (dev, &g_battery);
-	} else {
-		set_speaker_light_locked (dev, &g_notify);
+static void set_jogball_light_locked (struct light_device_t *dev, struct light_state_t *state) {
+	unsigned int colorRGB = state->color & 0xFFFFFF;
+
+	switch (state->flashMode) {
+		case LIGHT_FLASH_TIMED:
+		        write_int (TRACKBALL_BLINK_FILE, colorRGB != 0 ? 1 : 0);
+			break;
+		case LIGHT_FLASH_NONE:
+		        write_int (TRACKBALL_FILE, colorRGB != 0 ? 1 : 0);
+			break;
+		default:
+			LOGV("set_led_state colorRGB=%08X, unknown mode %d\n",
+					colorRGB, state->flashMode);
 	}
 }
 
@@ -230,19 +230,16 @@ static int set_light_battery (struct light_device_t* dev,
 		struct light_state_t const* state) {
 	pthread_mutex_lock (&g_lock);
 	g_battery = *state;
-	handle_speaker_battery_locked(dev);
+	set_speaker_light_locked (dev, &g_battery);
 	pthread_mutex_unlock (&g_lock);
-
 	return 0;
 }
 
 static int set_light_notifications (struct light_device_t* dev,
 		struct light_state_t const* state) {
-	int err =0;
-	int on = is_lit (state);
 	pthread_mutex_lock (&g_lock);
 	g_notify = *state;
-	handle_speaker_battery_locked (dev);
+	set_jogball_light_locked (dev, &g_notify);
 	pthread_mutex_unlock (&g_lock);
 	return 0;
 }
