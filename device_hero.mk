@@ -23,7 +23,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-KERNEL_NAME := 2.6.29.6-flykernel-11
+KERNEL_NAME := 2.6.29.6-flykernel-11b
 
 PRODUCT_COPY_FILES += \
     device/htc/hero/modules/modules.dep.bin:system/lib/modules/$(KERNEL_NAME)/modules.dep.bin \
