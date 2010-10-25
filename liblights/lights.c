@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 Ameer Ghouse 
+ * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ static struct light_state_t g_no_action;
 static struct light_state_t g_battery;
 static int g_haveAmberLed = 0;
 static int g_backlight = 255;
+static int g_trackball = -1;
 static int g_haveTrackballLight = 0;
 
 char const*const AMBER_LED_FILE = "/sys/class/leds/amber/brightness";
@@ -92,10 +93,6 @@ void init_globals (void) {
 	pthread_mutex_init (&g_lock, NULL);
 	g_haveTrackballLight = (access(TRACKBALL_FILE, W_OK) == 0) ? 1 : 0;
 	g_haveAmberLed = (access(AMBER_LED_FILE, W_OK) == 0) ? 1 : 0;
-	if (g_haveTrackballLight) {
-	  write_int(TRACKBALL_FILE, 3); // init track ball mode
-	  write_int(TRACKBALL_FILE, 0);
-	}
 }
 
 static int is_lit (struct light_state_t const* state) {
@@ -124,12 +121,15 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (AMBER_BLINK_FILE, 1);
 					break;
 				case LED_GREEN:
-			        case LED_WHITE:
 					write_int (GREEN_BLINK_FILE, 1);
+					break;
+				case LED_WHITE:
+					write_int (TRACKBALL_BLINK_FILE, 1);
 					break;
 				case LED_BLANK:
 					write_int (AMBER_BLINK_FILE, 0);
 					write_int (GREEN_BLINK_FILE, 0);
+					write_int (TRACKBALL_BLINK_FILE, 0);
 					break;
 				default:
 					LOGV("set_led_state colorRGB=%08X, unknown color\n",
@@ -144,13 +144,18 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 					write_int (GREEN_LED_FILE, 0);
 					break;
 				case LED_GREEN:
-			        case LED_WHITE:
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 1);
+					break;
+				case LED_WHITE:
+					write_int (AMBER_LED_FILE, 0);
+					write_int (GREEN_LED_FILE, 0);
+					write_int (TRACKBALL_FILE, 1);
 					break;
 				case LED_BLANK:
 					write_int (AMBER_LED_FILE, 0);
 					write_int (GREEN_LED_FILE, 0);
+					write_int (TRACKBALL_FILE, 0);
 					break;
 
 			}
@@ -162,19 +167,11 @@ static void set_speaker_light_locked (struct light_device_t *dev, struct light_s
 
 }
 
-static void set_jogball_light_locked (struct light_device_t *dev, struct light_state_t *state) {
-	unsigned int colorRGB = state->color & 0xFFFFFF;
-
-	switch (state->flashMode) {
-		case LIGHT_FLASH_TIMED:
-		        write_int (TRACKBALL_BLINK_FILE, colorRGB != 0 ? 1 : 0);
-			break;
-		case LIGHT_FLASH_NONE:
-		        write_int (TRACKBALL_FILE, colorRGB != 0 ? 1 : 0);
-			break;
-		default:
-			LOGV("set_led_state colorRGB=%08X, unknown mode %d\n",
-					colorRGB, state->flashMode);
+static void handle_speaker_battery_locked (struct light_device_t *dev) {
+	if (is_lit (&g_battery)) {
+		set_speaker_light_locked (dev, &g_battery);
+	} else {
+		set_speaker_light_locked (dev, &g_notify);
 	}
 }
 
@@ -201,6 +198,12 @@ handle_trackball_light_locked(struct light_device_t* dev)
     }
     LOGV("%s g_backlight = %d, mode = %d, g_attention = %d\n",
         __func__, g_backlight, mode, g_attention);
+
+    // If the value isn't changing, don't set it, because this
+    // can reset the timer on the breathing mode, which looks bad.
+    if (g_trackball == mode) {
+        return 0;
+    }
 
     return write_int(TRACKBALL_FILE, mode);
 }
@@ -230,16 +233,19 @@ static int set_light_battery (struct light_device_t* dev,
 		struct light_state_t const* state) {
 	pthread_mutex_lock (&g_lock);
 	g_battery = *state;
-	set_speaker_light_locked (dev, &g_battery);
+	handle_speaker_battery_locked(dev);
 	pthread_mutex_unlock (&g_lock);
+
 	return 0;
 }
 
 static int set_light_notifications (struct light_device_t* dev,
 		struct light_state_t const* state) {
+	int err =0;
+	int on = is_lit (state);
 	pthread_mutex_lock (&g_lock);
 	g_notify = *state;
-	set_jogball_light_locked (dev, &g_notify);
+	handle_speaker_battery_locked (dev);
 	pthread_mutex_unlock (&g_lock);
 	return 0;
 }
@@ -249,7 +255,8 @@ set_light_attention(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     pthread_mutex_lock(&g_lock);
-    LOGV("set_light_attention color=0x%08x", state->color);
+    LOGV("set_light_attention g_trackball=%d color=0x%08x",
+            g_trackball, state->color);
     if (state->flashMode == LIGHT_FLASH_HARDWARE) {
         g_attention = state->flashOnMS;
     } else if (state->flashMode == LIGHT_FLASH_NONE) {
