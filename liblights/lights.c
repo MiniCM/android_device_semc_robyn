@@ -100,7 +100,7 @@ static int is_lit (struct light_state_t const* state) {
 }
 
 static unsigned int led_color(struct light_state_t const* state) {
-	unsigned int colorRGB = state->color & 0x00ffffff;
+        unsigned int colorRGB = state->color & 0x00ffffff;
 	unsigned int color = LED_BLANK;
 	if ((colorRGB >> 8)&0xFF)
 		color = LED_GREEN;
@@ -125,50 +125,54 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
                                         write_int (AMBER_LED_FILE, 1);
 					write_int (AMBER_BLINK_FILE, 1);
                                         speakerLightAvailable = 0;
-					break;
+                                        break;
 				case LED_GREEN:
-					write_int (AMBER_LED_FILE, 0);
-					write_int (GREEN_LED_FILE, 1);
-					write_int (GREEN_BLINK_FILE, 1);
+                                        write_int (AMBER_LED_FILE, 0);
+                                        write_int (GREEN_LED_FILE, 1);
+                                        write_int (GREEN_BLINK_FILE, 1);
                                         speakerLightAvailable = 0;
-					break;
+                                        break;
 				case LED_WHITE:
-					write_int (TRACKBALL_BLINK_FILE, 1);
-					break;
+                                        write_int (TRACKBALL_FILE, 3);
+                                        write_int (TRACKBALL_BLINK_FILE, 1);
+                                        break;
 				case LED_BLANK:
-					write_int (AMBER_BLINK_FILE, 0);
-					write_int (GREEN_BLINK_FILE, 0);
-					write_int (TRACKBALL_BLINK_FILE, 0);
-					break;
+                                        write_int (AMBER_BLINK_FILE, 0);
+                                        write_int (GREEN_BLINK_FILE, 0);
+                                        write_int (TRACKBALL_FILE, 0);
+                                        break;
 				default:
-					LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown color for notification\n",
+                                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown color for notification\n",
                                                        colorRGB);
-					break;
+                                        break;
 			}
 			break;
 		case LIGHT_FLASH_NONE:
 			switch (color) {
 				case LED_AMBER:
-					write_int (AMBER_LED_FILE, 1);
-					write_int (GREEN_LED_FILE, 0);
+                                        write_int (AMBER_LED_FILE, 1);
+                                        write_int (GREEN_LED_FILE, 0);
+                                        write_int (AMBER_BLINK_FILE, 0);
                                         speakerLightAvailable = 0;
-					break;
+                                        break;
 				case LED_GREEN:
-					write_int (AMBER_LED_FILE, 0);
-					write_int (GREEN_LED_FILE, 1);
+                                        write_int (AMBER_LED_FILE, 0);
+                                        write_int (GREEN_LED_FILE, 1);
+                                        write_int (GREEN_BLINK_FILE, 0);
                                         speakerLightAvailable = 0;
-					break;
+                                        break;
 				case LED_WHITE:
-					write_int (TRACKBALL_FILE, 1);
-					break;
+                                        write_int (TRACKBALL_FILE, 3);
+                                        write_int (TRACKBALL_BLINK_FILE, 0);
+                                        break;
 				case LED_BLANK:
-					write_int (TRACKBALL_FILE, 0);
-					break;
+                                        write_int (TRACKBALL_FILE, 0);
+                                        break;
 			}
 			break;
 		default:
-			LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for notification\n",
-					colorRGB, g_notify.flashMode);
+                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for notification\n",
+                                        colorRGB, g_notify.flashMode);
 	}
 
         // if notifications left speaker light available, then battery might use it:
@@ -178,13 +182,15 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
                 if (g_battery.flashMode == LIGHT_FLASH_NONE) {
                         switch (color) {
                                 case LED_AMBER:
-                                        write_int (AMBER_LED_FILE, 1);
                                         write_int (GREEN_LED_FILE, 0);
+                                        write_int (AMBER_LED_FILE, 1);
+                                        write_int (AMBER_BLINK_FILE, 0);
                                         speakerLightAvailable = 0;
                                         break;
                                 case LED_GREEN:
                                         write_int (AMBER_LED_FILE, 0);
                                         write_int (GREEN_LED_FILE, 1);
+                                        write_int (GREEN_BLINK_FILE, 0);
                                         speakerLightAvailable = 0;
                                         break;
                                 case LED_BLANK:
@@ -216,7 +222,6 @@ static int set_light_buttons (struct light_device_t* dev,
 	int on = is_lit (state);
 	pthread_mutex_lock (&g_lock);
 	err = write_int (BUTTON_FILE, on?255:0);
-	err = write_int (TRACKBALL_FILE, on?1:0);
 	pthread_mutex_unlock (&g_lock);
 
 	return 0;
