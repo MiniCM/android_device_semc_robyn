@@ -141,10 +141,6 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
                                         write_int (GREEN_BLINK_FILE, 0);
                                         write_int (TRACKBALL_FILE, 0);
                                         break;
-				default:
-                                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown color for notification\n",
-                                                       colorRGB);
-                                        break;
 			}
 			break;
 		case LIGHT_FLASH_NONE:
@@ -171,7 +167,7 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
 			}
 			break;
 		default:
-                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for notification\n",
+                        SLOGE("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for notification\n",
                                         colorRGB, g_notify.flashMode);
 	}
 
@@ -179,7 +175,33 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
         if (speakerLightAvailable && is_lit(&g_battery)) {
                 colorRGB = g_battery.color & 0x00ffffff;
                 color = led_color(&g_battery);
-                if (g_battery.flashMode == LIGHT_FLASH_NONE) {
+                switch (g_battery.flashMode) {
+                case LIGHT_FLASH_TIMED:
+                        switch (color) {
+                                case LED_AMBER:
+                                        write_int (GREEN_LED_FILE, 0);
+                                        write_int (AMBER_LED_FILE, 1);
+                                        write_int (AMBER_BLINK_FILE, 1);
+                                        speakerLightAvailable = 0;
+                                        break;
+                                case LED_GREEN:
+                                        write_int (AMBER_LED_FILE, 0);
+                                        write_int (GREEN_LED_FILE, 1);
+                                        write_int (GREEN_BLINK_FILE, 1);
+                                        speakerLightAvailable = 0;
+                                        break;
+                                case LED_BLANK:
+                                        write_int (AMBER_BLINK_FILE, 0);
+                                        write_int (GREEN_BLINK_FILE, 0);
+                                        write_int (TRACKBALL_FILE, 0);
+                                        break;
+                                default:
+                                        SLOGE("handle_speaker_battery_locked colorRGB=%08X, unknown color for battery flash\n",
+                                                       colorRGB);
+                                        break;
+                        }
+                        break;
+                case LIGHT_FLASH_NONE:
                         switch (color) {
                                 case LED_AMBER:
                                         write_int (GREEN_LED_FILE, 0);
@@ -198,12 +220,13 @@ static void handle_speaker_battery_locked (struct light_device_t *dev) {
                                         write_int (TRACKBALL_FILE, 0);
                                         break;
                                 default:
-                                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown color for battery\n",
+                                        SLOGE("handle_speaker_battery_locked colorRGB=%08X, unknown color for battery\n",
                                                        colorRGB);
                                         break;
                         }
-                } else {
-                        LOGV("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for battery\n",
+                        break;
+                default:
+                        SLOGE("handle_speaker_battery_locked colorRGB=%08X, unknown mode %d for battery\n",
                                         colorRGB, g_battery.flashMode);
                 }
         }
