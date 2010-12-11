@@ -93,22 +93,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-meta=true \
     media.stagefright.enable-scan=true \
     media.stagefright.enable-http=true \
-    keyguard.no_require_sim=true \
-    ro.setupwizard.enterprise_mode=1
+    keyguard.no_require_sim=true
 
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=160
-    
+
 # Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:jit
-    
+    dalvik.vm.execution-mode=int:jit \
+    dalvik.vm.heapsize=24m \
+    ro.compcache.default=0
+
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
-    
+
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
 
