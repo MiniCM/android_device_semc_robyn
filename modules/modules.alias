@@ -1,5 +1,0 @@
-# Aliases extracted from modules themselves.
-alias char-major-10-229 fuse
-alias sdio:c07v*d* wlan
-alias rtnl-link-gretap ip_gre
-alias rtnl-link-gre ip_gre
