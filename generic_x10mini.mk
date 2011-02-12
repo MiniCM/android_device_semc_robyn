@@ -14,15 +14,15 @@
 
 #
 # This file is the build configuration for a generic Android
-# build for hero hardware. This cleanly combines a set of
+# build for x10mini hardware. This cleanly combines a set of
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/htc/hero/device_hero_us.mk)
+$(call inherit-product, device/htc/x10mini/device_x10mini_us.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := generic_hero
-PRODUCT_DEVICE := hero
+PRODUCT_NAME := generic_x10mini
+PRODUCT_DEVICE := x10mini

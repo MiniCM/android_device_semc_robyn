@@ -16,7 +16,7 @@
 
 # Kernel Targets
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/htc/hero/kernel
+	LOCAL_KERNEL := device/htc/x10mini/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -26,28 +26,28 @@ PRODUCT_COPY_FILES += \
 KERNEL_NAME := 2.6.29.6-flykernel-12pre2
 
 PRODUCT_COPY_FILES += \
-    device/htc/hero/modules/modules.dep.bb:system/lib/modules/$(KERNEL_NAME)/modules.dep.bb \
-    device/htc/hero/modules/modules.order:system/lib/modules/$(KERNEL_NAME)/modules.order \
-    device/htc/hero/modules/ip_gre.ko:system/lib/modules/$(KERNEL_NAME)/net/ipv4/ip_gre.ko \
-    device/htc/hero/modules/wlan.ko:system/lib/modules/$(KERNEL_NAME)/drivers/net/wireless/tiwlan1251/wlan.ko \
-    device/htc/hero/modules/hid-dummy.ko:system/lib/modules/$(KERNEL_NAME)/drivers/hid/hid-dummy.ko \
-    device/htc/hero/modules/ramzswap.ko:system/lib/modules/$(KERNEL_NAME)/drivers/staging/ramzswap/ramzswap.ko \
-    device/htc/hero/modules/cifs.ko:system/lib/modules/$(KERNEL_NAME)/fs/cifs/cifs.ko \
-    device/htc/hero/modules/fuse.ko:system/lib/modules/$(KERNEL_NAME)/fs/fuse/fuse.ko \
-    device/htc/hero/modules/wlan.ko:system/lib/modules/wlan.ko
+    device/htc/x10mini/modules/modules.dep.bb:system/lib/modules/$(KERNEL_NAME)/modules.dep.bb \
+    device/htc/x10mini/modules/modules.order:system/lib/modules/$(KERNEL_NAME)/modules.order \
+    device/htc/x10mini/modules/ip_gre.ko:system/lib/modules/$(KERNEL_NAME)/net/ipv4/ip_gre.ko \
+    device/htc/x10mini/modules/wlan.ko:system/lib/modules/$(KERNEL_NAME)/drivers/net/wireless/tiwlan1251/wlan.ko \
+    device/htc/x10mini/modules/hid-dummy.ko:system/lib/modules/$(KERNEL_NAME)/drivers/hid/hid-dummy.ko \
+    device/htc/x10mini/modules/ramzswap.ko:system/lib/modules/$(KERNEL_NAME)/drivers/staging/ramzswap/ramzswap.ko \
+    device/htc/x10mini/modules/cifs.ko:system/lib/modules/$(KERNEL_NAME)/fs/cifs/cifs.ko \
+    device/htc/x10mini/modules/fuse.ko:system/lib/modules/$(KERNEL_NAME)/fs/fuse/fuse.ko \
+    device/htc/x10mini/modules/wlan.ko:system/lib/modules/wlan.ko
 
-DEVICE_PACKAGE_OVERLAYS := device/htc/hero/overlay
+DEVICE_PACKAGE_OVERLAYS := device/htc/x10mini/overlay
 
 PRODUCT_PACKAGES += \
     librs_jni \
-    sensors.hero \
-    lights.hero 
+    sensors.x10mini \
+    lights.x10mini 
 
 # Passion uses high-density artwork where available
 PRODUCT_LOCALES += mdpi
 
 # proprietary side of the device
-$(call inherit-product-if-exists, vendor/htc/hero/device_hero-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/x10mini/device_x10mini-vendor.mk)
 
 # from device_dream_sapphire.mk
 PRODUCT_COPY_FILES += \
@@ -58,10 +58,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
-# hero specific gps.conf
+# x10mini specific gps.conf
 
 PRODUCT_COPY_FILES += \
-    device/htc/heroc/gps.conf:system/etc/gps.conf
+    device/htc/x10minic/gps.conf:system/etc/gps.conf
 
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
@@ -89,7 +89,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=160
+    ro.sf.lcd_density=120
 
 # Default network type
 # 0 => WCDMA Preferred.
@@ -98,7 +98,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
+    device/htc/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)

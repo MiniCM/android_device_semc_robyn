@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),hero)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -25,7 +25,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_SRC_FILES := sensors.c
-LOCAL_MODULE := sensors.hero
+LOCAL_MODULE := sensors.x10mini
 include $(BUILD_SHARED_LIBRARY)
 
 # HAL module implemenation, not prelinked and stored in

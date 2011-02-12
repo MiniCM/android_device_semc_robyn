@@ -14,40 +14,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=hero
+DEVICE=x10mini
 
 mkdir -p ../../../vendor/htc/$DEVICE/proprietary
 
 unzip -j -o ../../../${DEVICE}_update.zip -d ../../../vendor/htc/$DEVICE/proprietary \
-	 system/bin/akmd \
-	 system/etc/01_qcomm_omx.cfg \
-	 system/etc/AudioFilter.csv \
-	 system/etc/AudioPara4.csv \
-	 system/etc/AudioPreProcess.csv \
-         system/etc/firmware/avpr.bts \
-     	 system/etc/firmware/brf6300.bin \
-     	 system/etc/firmware/brf6350.bin \
-     	 system/etc/firmware/fmc_init_1273.2.bts \
-     	 system/etc/firmware/fm_rx_init_1273.2.bts \
-     	 system/etc/firmware/tiinit_5.3.53.bts \
-     	 system/etc/firmware/vac_config.ini \
-     	 system/etc/wifi/Fw1251r1c.bin \
-	 system/lib/egl/libGLES_qcom.so \
-	 system/lib/libhardware_legacy.so \
-	 system/lib/libaudioeq.so \
-	 system/lib/libcamera.so \
-	 system/lib/libgps.so \
-	 system/lib/libhtc_acoustic.so \
-	 system/lib/libhtc_ril.so \
-	 system/lib/libmm-adspsvc.so \
-	 system/lib/liboemcamera.so \
-	 system/lib/libOmxCore.so \
-	 system/lib/libOmxH264Dec.so \
-	 system/lib/libOmxMpeg4Dec.so \
-	 system/lib/libOmxVidEnc.so \
-	 system/lib/hw/lights.msm7k.so
+    system/bin/akmd2 \\
+    system/system/bin/mm-venc-omx-test \\
+    system/etc/01_qcomm_omx.cfg \\
+    system/etc/firmware/TIInit_7.2.31.bts \\
+    system/etc/firmware/fm_rx_init_1273.1.bts \\
+    system/etc/firmware/fm_rx_init_1273.2.bts \\
+    system/etc/firmware/fm_tx_init_1273.1.bts \\
+    system/etc/firmware/fm_tx_init_1273.2.bts \\
+    system/etc/firmware/fmc_init_1273.1.bts \\
+    system/etc/firmware/fmc_init_1273.2.bts \\
+    system/etc/firmware/yamato_pfp.fw \\
+    system/etc/firmware/yamato_pm4.fw \\
+    system/lib/egl/libEGL_adreno200.so \\
+    system/lib/egl/libGLESv1_CM_adreno200.so \\
+    system/lib/egl/libGLESv2_adreno200.so \\
+    system/lib/egl/libGLES_qcom.so \\
+    system/lib/egl/libq3dtools_adreno200.so \\
+    system/lib/libcamera.so \\
+    system/lib/libgps.so \\
+    system/lib/libgsl.so \\
+    system/lib/libril-qc-1.so \\
+    system/lib/liboemcamera.so \\
+    system/lib/libfm_stack.so \\
+    system/lib/hw/gralloc.msm7k.so \\
+    system/lib/libaudioeq.so \\
+    #system/lib/libreference-ril.so \\
+    #system/etc/AudioFilter.csv \\
+    system/lib/libmm-adspsvc.so \\
+    system/lib/libOmxCore.so \\
+    system/lib/libOmxH264Dec.so \\
+    system/lib/libOmxMpeg4Dec.so \\
+    system/lib/libOmxVidEnc.so
 	 
-chmod 755 ../../../vendor/htc/$DEVICE/proprietary/akmd
+chmod 755 ../../../vendor/htc/$DEVICE/proprietary/akmd2
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/htc/$DEVICE/device_$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -71,32 +76,42 @@ PRODUCT_COPY_FILES := \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so
 
 PRODUCT_COPY_FILES += \\
-    vendor/htc/__DEVICE__/proprietary/akmd:system/bin/akmd \\
+    vendor/htc/__DEVICE__/proprietary/akmd2:system/bin/akmd2 \\
+    vendor/htc/__DEVICE__/proprietary/mm-venc-omx-test:system/system/bin/mm-venc-omx-test \\
     vendor/htc/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \\
-    vendor/htc/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
-    vendor/htc/__DEVICE__/proprietary/AudioPara4.csv:system/etc/AudioPara4.csv \\
-    vendor/htc/__DEVICE__/proprietary/AudioPreProcess.csv:system/etc/AudioPreProcess.csv \\
-    vendor/htc/__DEVICE__/proprietary/avpr.bts:system/etc/firmware/avpr.bts \\
-    vendor/htc/__DEVICE__/proprietary/brf6300.bin:system/etc/firmware/brf6300.bin \\
-    vendor/htc/__DEVICE__/proprietary/brf6350.bin:system/etc/firmware/brf6350.bin \\
-    vendor/htc/__DEVICE__/proprietary/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \\
+    vendor/htc/__DEVICE__/proprietary/TIInit_7.2.31.bts:system/etc/firmware/TIInit_7.2.31.bts \\
+    vendor/htc/__DEVICE__/proprietary/fm_rx_init_1273.1.bts:system/etc/firmware/fm_rx_init_1273.1.bts \\
     vendor/htc/__DEVICE__/proprietary/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \\
-    vendor/htc/__DEVICE__/proprietary/tiinit_5.3.53.bts:system/etc/firmware/tiinit_5.3.53.bts \\
-    vendor/htc/__DEVICE__/proprietary/vac_config.ini:system/etc/firmware/vac_config.ini \\
-    vendor/htc/__DEVICE__/proprietary/Fw1251r1c.bin:system/etc/wifi/Fw1251r1c.bin \\
+    vendor/htc/__DEVICE__/proprietary/fm_tx_init_1273.1.bts:system/etc/firmware/fm_tx_init_1273.1.bts \\
+    vendor/htc/__DEVICE__/proprietary/fm_tx_init_1273.2.bts:system/etc/firmware/fm_tx_init_1273.2.bts \\
+    vendor/htc/__DEVICE__/proprietary/fmc_init_1273.1.bts:system/etc/firmware/fmc_init_1273.1.bts \\
+    vendor/htc/__DEVICE__/proprietary/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \\
+    vendor/htc/__DEVICE__/proprietary/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \\
+    vendor/htc/__DEVICE__/proprietary/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \\
+    vendor/htc/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
+    vendor/htc/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\
+    vendor/htc/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
     vendor/htc/__DEVICE__/proprietary/libGLES_qcom.so:system/lib/egl/libGLES_qcom.so \\
-	vendor/htc/__DEVICE__/proprietary/libaudioeq.so:system/lib/libaudioeq.so \\
-    vendor/htc/__DEVICE__/proprietary/libgps.so:system/lib/libgps.so \\
-    vendor/htc/__DEVICE__/proprietary/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \\
-    vendor/htc/__DEVICE__/proprietary/libhtc_ril.so:system/lib/libhtc_ril.so \\
-    vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
-    vendor/htc/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
+    vendor/htc/__DEVICE__/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \\
     vendor/htc/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
+    vendor/htc/__DEVICE__/proprietary/libgps.so:system/lib/libgps.so \\
+    vendor/htc/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
+    vendor/htc/__DEVICE__/proprietary/libril-qc-1.so:system/lib/libril-qc-1.so \\
+    vendor/htc/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
+    vendor/htc/__DEVICE__/proprietary/libfm_stack.so:system/lib/libfm_stack.so \\
+    vendor/htc/__DEVICE__/proprietary/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudioeq.so:system/lib/libaudioeq.so \\
+    #vendor/htc/__DEVICE__/proprietary/libreference-ril.so:system/lib/libreference-ril.so \\
+    #vendor/htc/__DEVICE__/proprietary/AudioFilter.csv:system/etc/AudioFilter.csv \\
+    vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxCore.so:system/lib/libOmxCore.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
-    vendor/htc/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
-    vendor/htc/__DEVICE__/proprietary/lights.msm7k.so:system/lib/hw/lights.msm7k.so \\
+    vendor/htc/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
+
+PRODUCT_COPY_FILES += \\
+    vendor/htc/__DEVICE__/proprietary/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \\
+    vendor/htc/__DEVICE__/proprietary/sdio.ko:system/lib/modules/sdio.ko
 EOF
 
 ./setup-makefiles.sh

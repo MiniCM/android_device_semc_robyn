@@ -28,7 +28,7 @@ on init
 on boot
 # unmap left alt to avoid console switch
     setkey 0x0 0x38 0x0
-# hero reset SEND+MENU+END
+# x10mini reset SEND+MENU+END
     setkey 0x0 0xe7 0x706
     setkey 0x0 0x8b 0x707
 

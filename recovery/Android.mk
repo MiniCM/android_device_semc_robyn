@@ -25,7 +25,7 @@ LOCAL_C_INCLUDES += bootable/recovery
 LOCAL_SRC_FILES := recovery_ui.c
 
 # should match TARGET_RECOVERY_UI_LIB should be set in BoardConfig.mk
-LOCAL_MODULE := librecovery_ui_hero
+LOCAL_MODULE := librecovery_ui_x10mini
 
 include $(BUILD_STATIC_LIBRARY)
 

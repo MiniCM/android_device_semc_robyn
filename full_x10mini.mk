@@ -14,14 +14,14 @@
 
 #
 # This file is the build configuration for a full Android
-# build for hero hardware. This cleanly combines a set of
+# build for x10mini hardware. This cleanly combines a set of
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, device/htc/hero/device_hero_eu.mk)
+$(call inherit-product, device/htc/x10mini/device_x10mini_eu.mk)
 
 PRODUCT_PACKAGES += \
     VoiceDialer
@@ -35,10 +35,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
-# Specific hero init.rc
+# Specific x10mini init.rc
 PRODUCT_COPY_FILES += \
-    device/htc/hero/init.rc:root/init.rc \
-    device/htc/hero/placeholder:system/sd/placeholder
+    device/htc/x10mini/init.rc:root/init.rc \
+    device/htc/x10mini/placeholder:system/sd/placeholder
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -98,7 +98,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # density in DPI of the LCD of this board. This is used to scale the UI
 # appropriately. If this property is not defined, the default value is 160 dpi. 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=160
+    ro.sf.lcd_density=120
 
 # Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -108,7 +108,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/htc/hero/media_profiles.xml:/system/etc/media_profiles.xml
+    device/htc/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
@@ -116,7 +116,7 @@ $(call inherit-product, device/htc/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_hero
-PRODUCT_DEVICE := hero
-PRODUCT_MODEL := Full Android on Hero
+PRODUCT_NAME := full_x10mini
+PRODUCT_DEVICE := x10mini
+PRODUCT_MODEL := Full Android on X10 mini
 PRODUCT_DEFAULT_WIFI_CHANNELS := 14
