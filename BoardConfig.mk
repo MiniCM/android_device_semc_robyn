@@ -20,7 +20,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 -include vendor/htc/x10mini/BoardConfigVendor.mk
 
@@ -28,8 +28,8 @@ TARGET_BOARD_PLATFORM := msm7k
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := true
+TARGET_NO_KERNEL := true
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_CPU_ABI := armeabi-v6j
@@ -41,22 +41,37 @@ WITH_JIT := true
 ENABLE_JSC_JIT:=true
 
 # Wifi related defines
+##BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
+#BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+##BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libWifiApi
+##BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/sta_dk_4_0_4_32
+#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
+#WIFI_DRIVER_MODULE_ARG      := ""
+#WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
+#WIFI_FIRMWARE_LOADER        := "tiwlan_loader"
+
+# Wifi
+USES_TI_WL1271 := true
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libWifiApi
-BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/sta_dk_4_0_4_32
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
-WIFI_DRIVER_MODULE_ARG      := ""
+BOARD_WLAN_DEVICE           := wl1271
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+WIFI_DRIVER_MODULE_PATH     := "/system/etc/wifi/tiwlan_drv.ko"
 WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
 WIFI_FIRMWARE_LOADER        := "wlan_loader"
 
+
+
+
 BOARD_USES_GENERIC_AUDIO := false
+#BOARD_USES_ALSA_AUDIO := true
+#BUILD_WITH_ALSA_UTILS := true
 
 # Use HTC USB Function Switch to enable tethering via USB
 #BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
 
-BOARD_USE_HTC_LIBSENSORS := true
-BOARD_USE_HERO_LIBSENSORS := true
-BOARD_USES_QCOM_LIBS := true
+#BOARD_USE_HTC_LIBSENSORS := true
+#BOARD_USE_HERO_LIBSENSORS := true
+#BOARD_USES_QCOM_LIBS := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x19200000
@@ -65,7 +80,7 @@ BOARD_HAVE_BLUETOOTH := true
 
 BOARD_VENDOR_USE_AKMD := akm8973
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 6355
+#BOARD_VENDOR_QCOM_AMSS_VERSION := 6355
 
 # The size of a block that can be marked bad.
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -102,4 +117,4 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0ce00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0d3c0000
 
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_x10mini librecovery_ui_htc
-TARGET_PREBUILT_KERNEL := device/htc/x10mini/kernel
+#TARGET_PREBUILT_KERNEL := device/htc/x10mini/kernel

@@ -49,8 +49,9 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
     
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libhtc_ril.so \
-    wifi.interface=tiwlan0
+    rild.libpath=/system/lib/libril-qc-1.so \
+    rild.libargs=-d /dev/smd0 \
+    wifi.interface=wlan0
     
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
@@ -103,7 +104,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Increase dalvik heap size to prevent excessive GC with lots of apps installed.
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.execution-mode=int:jit \
-    dalvik.vm.heapsize=24m \
+    dalvik.vm.heapsize=32m \
     ro.compcache.default=0
 
 # media configuration xml file

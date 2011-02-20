@@ -25,16 +25,16 @@ PRODUCT_COPY_FILES += \
 
 KERNEL_NAME := 2.6.29.6-flykernel-12pre2
 
-PRODUCT_COPY_FILES += \
-    device/htc/x10mini/modules/modules.dep.bb:system/lib/modules/$(KERNEL_NAME)/modules.dep.bb \
-    device/htc/x10mini/modules/modules.order:system/lib/modules/$(KERNEL_NAME)/modules.order \
-    device/htc/x10mini/modules/ip_gre.ko:system/lib/modules/$(KERNEL_NAME)/net/ipv4/ip_gre.ko \
-    device/htc/x10mini/modules/wlan.ko:system/lib/modules/$(KERNEL_NAME)/drivers/net/wireless/tiwlan1251/wlan.ko \
-    device/htc/x10mini/modules/hid-dummy.ko:system/lib/modules/$(KERNEL_NAME)/drivers/hid/hid-dummy.ko \
-    device/htc/x10mini/modules/ramzswap.ko:system/lib/modules/$(KERNEL_NAME)/drivers/staging/ramzswap/ramzswap.ko \
-    device/htc/x10mini/modules/cifs.ko:system/lib/modules/$(KERNEL_NAME)/fs/cifs/cifs.ko \
-    device/htc/x10mini/modules/fuse.ko:system/lib/modules/$(KERNEL_NAME)/fs/fuse/fuse.ko \
-    device/htc/x10mini/modules/wlan.ko:system/lib/modules/wlan.ko
+#PRODUCT_COPY_FILES += \
+#    device/htc/x10mini/modules/modules.dep.bb:system/lib/modules/$(KERNEL_NAME)/modules.dep.bb \
+#    device/htc/x10mini/modules/modules.order:system/lib/modules/$(KERNEL_NAME)/modules.order \
+#    device/htc/x10mini/modules/ip_gre.ko:system/lib/modules/$(KERNEL_NAME)/net/ipv4/ip_gre.ko \
+#    device/htc/x10mini/modules/wlan.ko:system/lib/modules/$(KERNEL_NAME)/drivers/net/wireless/tiwlan1251/wlan.ko \
+#    device/htc/x10mini/modules/hid-dummy.ko:system/lib/modules/$(KERNEL_NAME)/drivers/hid/hid-dummy.ko \
+#    device/htc/x10mini/modules/ramzswap.ko:system/lib/modules/$(KERNEL_NAME)/drivers/staging/ramzswap/ramzswap.ko \
+#    device/htc/x10mini/modules/cifs.ko:system/lib/modules/$(KERNEL_NAME)/fs/cifs/cifs.ko \
+#    device/htc/x10mini/modules/fuse.ko:system/lib/modules/$(KERNEL_NAME)/fs/fuse/fuse.ko \
+#    device/htc/x10mini/modules/wlan.ko:system/lib/modules/wlan.ko
 
 DEVICE_PACKAGE_OVERLAYS := device/htc/x10mini/overlay
 
@@ -67,10 +67,11 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libhtc_ril.so \
+    rild.libpath=/system/lib/libril-qc-1.so \
+    rild.libargs=-d /dev/smd0 \
     ro.ril.hsxpa=2 \
     ro.ril.gprsclass=10 \
-    wifi.interface=tiwlan0
+    wifi.interface=wlan0
 
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
