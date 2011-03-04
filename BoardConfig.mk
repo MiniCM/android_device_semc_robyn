@@ -66,6 +66,9 @@ BOARD_USES_GENERIC_AUDIO := false
 #BOARD_USES_ALSA_AUDIO := true
 #BUILD_WITH_ALSA_UTILS := true
 
+BUILD_PV_VIDEO_ENCODERS :=true
+#ENABLE_PV_LOGGING:=true
+
 # Use HTC USB Function Switch to enable tethering via USB
 #BOARD_USE_HTC_USB_FUNCTION_SWITCH := true
 
