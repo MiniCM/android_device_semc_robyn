@@ -14,8 +14,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-$(call add-radio-file,recovery/images/firmware_install.565)
-
 # Hero GSM
 
 file := $(TARGET_OUT_KEYLAYOUT)/x10mini-keypad.kl
@@ -33,9 +31,6 @@ LOCAL_SRC_FILES := x10mini-keypad.kcm
 include $(BUILD_KEY_CHAR_MAP)
         
 # Hero generic
-
-$(call add-radio-file,recovery/images/firmware_error.565)
-$(call add-radio-file,recovery/images/bitmap_size.txt)
 
 file := $(TARGET_OUT_KEYLAYOUT)/h2w_headset.kl
 ALL_PREBUILT += $(file)
