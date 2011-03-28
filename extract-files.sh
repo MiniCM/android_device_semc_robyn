@@ -88,7 +88,7 @@ then
     adb pull /system/lib/libskiagl.so ../../../vendor/htc/$DEVICE/proprietary/libskiagl.so
     adb pull /system/lib/libmmjpeg.so ../../../vendor/htc/$DEVICE/proprietary/libmmjpeg.so
     adb pull /system/lib/libwpa_client.so ../../../vendor/htc/$DEVICE/proprietary/libwpa_client.so
-    #adb pull /system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary/libaudio.so
+    adb pull /system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary/libaudio.so
     adb pull /system/lib/libreference-ril.so ../../../vendor/htc/$DEVICE/proprietary/libreference-ril.so
     adb pull /system/lib/libmmipl.so ../../../vendor/htc/$DEVICE/proprietary/libmmipl.so
     adb pull /system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary/libdiag.so
@@ -188,7 +188,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libskiagl.so ../../../vendor/htc/$DEVICE/proprietary/libskiagl.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmjpeg.so ../../../vendor/htc/$DEVICE/proprietary/libmmjpeg.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libwpa_client.so ../../../vendor/htc/$DEVICE/proprietary/libwpa_client.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary/libaudio.so
+    cp -pr $LOCAL_PROPR_DIR/system/lib/libaudio.so ../../../vendor/htc/$DEVICE/proprietary/libaudio.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libreference-ril.so ../../../vendor/htc/$DEVICE/proprietary/libreference-ril.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmipl.so ../../../vendor/htc/$DEVICE/proprietary/libmmipl.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libdiag.so ../../../vendor/htc/$DEVICE/proprietary/libdiag.so
@@ -309,7 +309,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libskiagl.so:/system/lib/libskiagl.so \\
     vendor/htc/__DEVICE__/proprietary/libmmjpeg.so:/system/lib/libmmjpeg.so \\
     vendor/htc/__DEVICE__/proprietary/libwpa_client.so:/system/lib/libwpa_client.so \\
-    #vendor/htc/__DEVICE__/proprietary/libaudio.so:/system/lib/libaudio.so \\
+    vendor/htc/__DEVICE__/proprietary/libaudio.so:/system/lib/libaudio.so \\
     vendor/htc/__DEVICE__/proprietary/libreference-ril.so:/system/lib/libreference-ril.so \\
     vendor/htc/__DEVICE__/proprietary/libmmipl.so:/system/lib/libmmipl.so \\
     vendor/htc/__DEVICE__/proprietary/libdiag.so:/system/lib/libdiag.so \\
