@@ -79,7 +79,7 @@
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles>
 
-        <EncoderProfile quality="high" fileFormat="3gp" duration="60">
+        <EncoderProfile quality="high" fileFormat="mp4" duration="60">
             <Video codec="h263"
                    bitRate="1600000"
                    width="640"
