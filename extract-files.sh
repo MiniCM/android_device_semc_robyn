@@ -72,7 +72,7 @@ then
     adb pull /system/lib/libloc.so ../../../vendor/htc/$DEVICE/proprietary/libloc.so
     adb pull /system/lib/libmmgsdilib.so ../../../vendor/htc/$DEVICE/proprietary/libmmgsdilib.so
     adb pull /system/lib/libqmi.so ../../../vendor/htc/$DEVICE/proprietary/libqmi.so
-    #adb pull /system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary/libril.so
+    adb pull /system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary/libril.so
     adb pull /system/lib/libloc-rpc.so ../../../vendor/htc/$DEVICE/proprietary/libloc-rpc.so
     adb pull /system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/htc/$DEVICE/proprietary/libuinputdevicejni.so
     adb pull /system/lib/libwms.so ../../../vendor/htc/$DEVICE/proprietary/libwms.so
@@ -172,7 +172,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libloc.so ../../../vendor/htc/$DEVICE/proprietary/libloc.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmgsdilib.so ../../../vendor/htc/$DEVICE/proprietary/libmmgsdilib.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libqmi.so ../../../vendor/htc/$DEVICE/proprietary/libqmi.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary/libril.so
+    cp -pr $LOCAL_PROPR_DIR/system/lib/libril.so ../../../vendor/htc/$DEVICE/proprietary/libril.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libloc-rpc.so ../../../vendor/htc/$DEVICE/proprietary/libloc-rpc.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/htc/$DEVICE/proprietary/libuinputdevicejni.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libwms.so ../../../vendor/htc/$DEVICE/proprietary/libwms.so
@@ -293,7 +293,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libloc.so:/system/lib/libloc.so \\
     vendor/htc/__DEVICE__/proprietary/libmmgsdilib.so:/system/lib/libmmgsdilib.so \\
     vendor/htc/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
-    #vendor/htc/__DEVICE__/proprietary/libril.so:/system/lib/libril.so \\
+    vendor/htc/__DEVICE__/proprietary/libril.so:/system/lib/libril.so \\
     vendor/htc/__DEVICE__/proprietary/libloc-rpc.so:/system/lib/libloc-rpc.so \\
     vendor/htc/__DEVICE__/proprietary/libuinputdevicejni.so:/system/lib/libsystemconnector/libuinputdevicejni.so \\
     vendor/htc/__DEVICE__/proprietary/libwms.so:/system/lib/libwms.so \\
