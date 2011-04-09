@@ -176,6 +176,11 @@ loglevel 3
     chown root root /cache/lost+found
     chmod 0770 /cache/lost+found
 
+# SEMC: Discretix DRM change start
+    mkdir /data/DxDrm 0777
+    mkdir /data/DxDrm/fuse
+# SEMC: Discretix DRM change end
+
     # allow net_raw to have access to /dev/socket directory
     chown root net_raw /dev/socket
     chmod 0775 /dev/socket
@@ -389,6 +394,14 @@ service pbap /system/bin/sdptool add --channel=19 PBAP
 
 service installd /system/bin/installd
     socket installd stream 600 system system
+
+# SEMC: Discretix DRM change start
+service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/fuse
+
+service drmbackup /system/bin/drmdbbackup
+    user system
+    oneshot
+# SEMC: Discretix DRM change end
 
 service racoon /system/bin/racoon
     socket racoon stream 600 system system

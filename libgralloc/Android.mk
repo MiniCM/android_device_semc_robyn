@@ -12,31 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
 
 LOCAL_PATH := $(call my-dir)
 
 # HAL module implemenation, not prelinked and stored in
-# hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.product.board>.so
+# hw/<OVERLAY_HARDWARE_MODULE_ID>.<ro.product.board>.so
 include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_SRC_FILES := sensors.c
-LOCAL_MODULE := sensors.x10mini
+LOCAL_SHARED_LIBRARIES := liblog libcutils libGLESv1_CM
+
+LOCAL_SRC_FILES := 	\
+	allocator.cpp 	\
+	framebuffer.cpp \
+	gpu.cpp			\
+	gralloc.cpp		\
+	mapper.cpp		\
+	pmemalloc.cpp
+	
+LOCAL_MODULE := gralloc.x10mini
+LOCAL_CFLAGS:= -DLOG_TAG=\"$(TARGET_BOARD_PLATFORM).gralloc\"
+
+LOCAL_CFLAGS += -DTARGET_MSM7x27
+
+
+ifeq ($(TARGET_GRALLOC_USES_ASHMEM),true)
+LOCAL_CFLAGS += -DUSE_ASHMEM
+endif
 include $(BUILD_SHARED_LIBRARY)
-
-# HAL module implemenation, not prelinked and stored in
-# hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.product.board>.so
-#include $(CLEAR_VARS)
-#LOCAL_PRELINK_MODULE := false
-#LOCAL_MODULE_TAGS := optional
-#LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-#LOCAL_SHARED_LIBRARIES := liblog libcutils
-#LOCAL_SRC_FILES := sensors.c
-#LOCAL_MODULE := sensors.trout
-#include $(BUILD_SHARED_LIBRARY)
-
 endif

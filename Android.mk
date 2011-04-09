@@ -1,1 +1,1 @@
-include $(call all-named-subdir-makefiles, libsensors  liblights)
+include $(call all-named-subdir-makefiles, liblights libril)

@@ -16,11 +16,9 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
-# Specific x10mini init.rc
 PRODUCT_COPY_FILES += \
-    device/htc/x10mini/init.rc:root/init.rc \
     device/htc/x10mini/placeholder:system/sd/placeholder
-
+    
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \

@@ -81,6 +81,7 @@ BOARD_EGL_CFG := device/htc/x10mini/egl.cfg
 # Use Eclair libcamera
 
 BOARD_USES_ECLAIR_LIBCAMERA := true
+TARGET_PROVIDES_LIBRIL := true
 
 # No fallback font by default (space savings)
 # NO_FALLBACK_FONT:=true

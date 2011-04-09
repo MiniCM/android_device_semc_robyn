@@ -21,10 +21,10 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/x10mini-keypad.kl | $(ACP)
 	$(transform-prebuilt-to-target)
 
-file := $(TARGET_ROOT_OUT)/init.x10mini.rc
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.x10mini.rc | $(ACP)
-	$(transform-prebuilt-to-target)
+#file := $(TARGET_ROOT_OUT)/init.x10mini.rc
+#ALL_PREBUILT += $(file)
+#$(file) : $(LOCAL_PATH)/init.x10mini.rc | $(ACP)
+#	$(transform-prebuilt-to-target)
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := x10mini-keypad.kcm
@@ -44,9 +44,9 @@ LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
 # the system properties for each device, loaded by init
-file := $(TARGET_OUT)/build.x10mini.prop
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/build.x10mini.prop | $(ACP)
-	$(transform-prebuilt-to-target)
+#file := $(TARGET_OUT)/build.x10mini.prop
+#ALL_PREBUILT += $(file)
+#$(file) : $(LOCAL_PATH)/build.x10mini.prop | $(ACP)
+#	$(transform-prebuilt-to-target)
 
 -include vendor/htc/x10mini/AndroidBoardVendor.mk
