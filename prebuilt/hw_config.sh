@@ -34,6 +34,11 @@ echo 4700 > $dev/spotlight::boost_mv # spotlight boost voltage
 echo 480 > $dev/cmaflash::current_ma # camera flash current
 echo 5000 > $dev/cmaflash::boost_mv # camera flash  voltage
 
+# Overclocking
+insmod /system/lib/modules/x8oc.ko
+echo x25 > /proc/x8oc
+echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 710400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
 # Needed by radio
 mkdir /data/radio

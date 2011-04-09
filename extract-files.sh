@@ -71,9 +71,9 @@ then
     adb pull /system/bin/semc_chargalg ../../../vendor/htc/$DEVICE/proprietary/semc_chargalg
     adb pull /system/bin/suntrolkac ../../../vendor/htc/$DEVICE/proprietary/suntrolkac
     adb pull /system/bin/DxDrmServerIpc ../../../vendor/htc/$DEVICE/proprietary/DxDrmServerIpc
-    adb pull /system/drm/DxDrm/DxDrmConfig.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig.txt
-    adb pull /system/drm/DxDrm/DxDrmConfig_Server.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig_Server.txt
-    adb pull /system/drm/DxDrm/init_drm.rc ../../../vendor/htc/$DEVICE/proprietary/init_drm.rc
+    #adb pull /system/drm/DxDrm/DxDrmConfig.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig.txt
+    #adb pull /system/drm/DxDrm/DxDrmConfig_Server.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig_Server.txt
+    #adb pull /system/drm/DxDrm/init_drm.rc ../../../vendor/htc/$DEVICE/proprietary/init_drm.rc
     adb pull /system/etc/AudioFilterPlatform.csv ../../../vendor/htc/$DEVICE/proprietary/AudioFilterPlatform.csv
     adb pull /system/etc/AudioFilterProduct.csv ../../../vendor/htc/$DEVICE/proprietary/AudioFilterProduct.csv
     adb pull /system/lib/libhardware_legacy.so ../../../vendor/htc/$DEVICE/proprietary/libhardware_legacy.so
@@ -185,9 +185,9 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/bin/semc_chargalg ../../../vendor/htc/$DEVICE/proprietary/semc_chargalg
     cp -pr $LOCAL_PROPR_DIR/system/bin/suntrolkac ../../../vendor/htc/$DEVICE/proprietary/suntrolkac
     cp -pr $LOCAL_PROPR_DIR/system/bin/DxDrmServerIpc ../../../vendor/htc/$DEVICE/proprietary/DxDrmServerIpc
-    cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/DxDrmConfig.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig.txt
-    cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/DxDrmConfig_Server.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig_Server.txt
-    cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/init_drm.rc ../../../vendor/htc/$DEVICE/proprietary/init_drm.rc
+    #cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/DxDrmConfig.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig.txt
+    #cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/DxDrmConfig_Server.txt ../../../vendor/htc/$DEVICE/proprietary/DxDrmConfig_Server.txt
+    #cp -pr $LOCAL_PROPR_DIR/system/drm/DxDrm/init_drm.rc ../../../vendor/htc/$DEVICE/proprietary/init_drm.rc
     cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilterPlatform.csv ../../../vendor/htc/$DEVICE/proprietary/AudioFilterPlatform.csv
     cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilterProduct.csv ../../../vendor/htc/$DEVICE/proprietary/AudioFilterProduct.csv
     cp -pr $LOCAL_PROPR_DIR/system/lib/libhardware_legacy.so ../../../vendor/htc/$DEVICE/proprietary/libhardware_legacy.so
@@ -304,7 +304,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
 
 
-# Telephony files
+# Ril files
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/rild:system/bin/rild \\
     device/htc/__DEVICE__/prebuilt/libril-qc-1.so:system/lib/libril-qc-1.so
@@ -324,28 +324,32 @@ PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/tun.ko:system/lib/modules/tun.ko \\
     device/htc/__DEVICE__/prebuilt/twofish.ko:system/lib/modules/twofish.ko \\
     device/htc/__DEVICE__/prebuilt/twofish_common.ko:system/lib/modules/twofish_common.ko \\
-    device/htc/__DEVICE__/prebuilt/x8gesture.ko:system/lib/modules/x8gesture.ko
+    device/htc/__DEVICE__/prebuilt/x8gesture.ko:system/lib/modules/x8gesture.ko \\
+    device/htc/__DEVICE__/prebuilt/x8oc.ko:system/lib/modules/x8gesture.ko
 
 PRODUCT_COPY_FILES += \\
-    vendor/htc/__DEVICE__/proprietary/drmdbbackup:system/bin/drmdbbackup \\
     vendor/htc/__DEVICE__/proprietary/kexec-tool:system/bin/kexec-tool \\
     vendor/htc/__DEVICE__/proprietary/nvimport:system/bin/nvimport \\
     vendor/htc/__DEVICE__/proprietary/semc_chargalg:system/bin/semc_chargalg \\
     vendor/htc/__DEVICE__/proprietary/suntrolkac:system/bin/suntrolkac \\
-    vendor/htc/__DEVICE__/proprietary/DxDrmServerIpc:system/bin/DxDrmServerIpc \\
-    vendor/htc/__DEVICE__/proprietary/DxDrmConfig.txt:system/drm/DxDrm/DxDrmConfig.txt \\
-    vendor/htc/__DEVICE__/proprietary/DxDrmConfig_Server.txt:system/drm/DxDrm/DxDrmConfig_Server.txt \\
-    vendor/htc/__DEVICE__/proprietary/init_drm.rc:system/drm/DxDrm/init_drm.rc \\
     vendor/htc/__DEVICE__/proprietary/AudioFilterPlatform.csv:system/etc/AudioFilterPlatform.csv \\
     vendor/htc/__DEVICE__/proprietary/AudioFilterProduct.csv:system/etc/AudioFilterProduct.csv \\
     vendor/htc/__DEVICE__/proprietary/libhardware_legacy.so:system/lib/libhardware_legacy.so
+
+# DRM
+PRODUCT_COPY_FILES += \\
+    vendor/htc/__DEVICE__/proprietary/drmdbbackup:system/bin/drmdbbackup \\
+    vendor/htc/__DEVICE__/proprietary/DxDrmServerIpc:system/bin/DxDrmServerIpc
+#    vendor/htc/__DEVICE__/proprietary/DxDrmConfig.txt:system/drm/DxDrm/DxDrmConfig.txt \\
+#    vendor/htc/__DEVICE__/proprietary/DxDrmConfig_Server.txt:system/drm/DxDrm/DxDrmConfig_Server.txt \\
+#    vendor/htc/__DEVICE__/proprietary/init_drm.rc:system/drm/DxDrm/init_drm.rc \\
 
 # Wpa-supplicant
 PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/wpa_supplicant:system/bin/wpa_supplicant \\
     device/htc/__DEVICE__/prebuilt/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
-## Extra libs to pull from device
+# Extra libs to pull from device
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/lights.default.so:system/lib/hw/lights.default.so \\
     vendor/htc/__DEVICE__/proprietary/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \\
@@ -388,7 +392,7 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/libdsm.so:system/lib/libdsm.so \\
     vendor/htc/__DEVICE__/proprietary/libdss.so:system/lib/libdss.so
 
-## Extra prebuilt binaries
+# Extra prebuilt binaries
 PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/hw_config.sh:system/etc/hw_config.sh \\
     device/htc/__DEVICE__/prebuilt/FmRxService.apk:system/app/FmRxService.apk \\
@@ -412,7 +416,7 @@ PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \\
     device/htc/__DEVICE__/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar
 
-## Keyboard layouts and T9
+# Keyboard layouts and T9
 PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/usr/zi/Basque/Zi8DatEUs.z8d:system/usr/zi/Basque/Zi8DatEUs.z8d \\
     device/htc/__DEVICE__/prebuilt/usr/zi/Danish/Zi8DatDAs.z8d:system/usr/zi/Danish/Zi8DatDAs.z8d \\

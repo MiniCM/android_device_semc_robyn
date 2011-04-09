@@ -117,7 +117,7 @@ on boot
     insmod /system/lib/modules/twofish_common.ko
     insmod /system/lib/modules/twofish.ko
 
-# insert kernel modules for fake DT
+# insert kernel module for fake DT
     rmmod synaptics_i2c_rmi4
     insmod /system/lib/modules/x8gesture.ko
 
