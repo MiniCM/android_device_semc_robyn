@@ -1,0 +1,11 @@
+ro.product.model=SE X10mini
+ro.product.brand=SE
+ro.product.name=x10mini
+ro.product.device=x10mini
+ro.product.board=x10mini
+# ro.build.product is obsolete; use ro.product.device
+ro.build.product=x10mini
+
+# GSM
+ro.telephony.default_network=0
+

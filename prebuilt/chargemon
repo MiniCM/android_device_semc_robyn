@@ -1,0 +1,41 @@
+#!/system/bin/busybox sh
+	/system/bin/charger
+	cat /dev/input/event1 > /dev/keycheck&
+	sleep 3
+	kill -9 $!
+	if [ -s /dev/keycheck -o -f /data/local/tmp/xrecovery ]
+	then
+	rm -f /data/local/tmp/xrecovery
+	# remount rootfs rw
+	mount -o remount,rw rootfs /
+
+	# Umount MTDs
+	umount -l /dev/block/mtdblock1
+	umount -l /dev/block/mtdblock2
+	umount -l /dev/block/mtdblock3
+
+	# Mount recovery partition
+	cd /
+	rm -r /sbin
+	rm -f etc
+	tar -xf /system/bin/xrecovery.tar
+
+	# Umount /system
+	umount -l /dev/block/mtdblock0
+
+	# chroot
+	chroot / /init
+
+	fi
+	# remount rootfs rw
+	mount -o remount,rw rootfs /
+
+ chmod 0777 /dev -R
+	 chown 0.2000 /dev/oncrpc -R
+	cd /
+	rm init*
+	rm logo.rle
+	rm default.prop
+	 tar -xf /system/bin/ramdisk.tar
+sync
+chroot / /init
