@@ -394,6 +394,7 @@ PRODUCT_COPY_FILES += \\
 
 # Extra prebuilt binaries
 PRODUCT_COPY_FILES += \\
+    device/htc/__DEVICE__/prebuilt/busybox:system/bin/busybox \\
     device/htc/__DEVICE__/prebuilt/hw_config.sh:system/etc/hw_config.sh \\
     device/htc/__DEVICE__/prebuilt/FmRxService.apk:system/app/FmRxService.apk \\
     device/htc/__DEVICE__/prebuilt/Radio.apk:system/app/Radio.apk \\
