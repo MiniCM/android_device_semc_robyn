@@ -5,7 +5,8 @@ $(call inherit-product, device/htc/x10mini/device_x10mini_eu.mk)
 PRODUCT_PACKAGES += \
     VoiceDialer \
     Torch \
-    Protips
+    Protips \
+    AndroidTerm
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
