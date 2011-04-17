@@ -27,15 +27,27 @@
 	chroot / /init
 
 	fi
+	
 	# remount rootfs rw
 	mount -o remount,rw rootfs /
-
- chmod 0777 /dev -R
-	 chown 0.2000 /dev/oncrpc -R
+	chmod 0777 /dev -R
+	chown 0.2000 /dev/oncrpc -R
 	cd /
 	rm init*
 	rm logo.rle
 	rm default.prop
-	 tar -xf /system/bin/ramdisk.tar
-sync
-chroot / /init
+	tar -xf /system/bin/ramdisk.tar
+	mkdir -p /minicm
+	cd /minicm
+	tar -xf /system/bin/ramdisk.tar
+	sync
+	# Umount /system, data and cache
+	umount -l /dev/block/mtdblock0
+	umount /dev/block/mtdblock3
+	umount /dev/block/mtdblock1
+	rmdir /system /data /cache /mnt
+	# Mount /system to /minicm/system
+	/sbin/mount_system
+	sleep 1
+	chroot /minicm /init
+	

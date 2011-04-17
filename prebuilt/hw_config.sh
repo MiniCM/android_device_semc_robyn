@@ -21,12 +21,6 @@ dev=/sys/devices/platform/proximity-sensor/semc/proximity-sensor
 echo  15 > $dev/led_on_ms         # sensor LED on time in ms
 echo  35 > $dev/led_off_ms       # sensor LED off time in ms
 
-echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold
-echo 30 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
-echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
-echo 245760 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-
 # Flash LED configuration
 dev=/sys/devices/platform/msm_pmic_flash_led
 echo 80 > $dev/spotlight::current_ma # spotlight current
@@ -35,6 +29,12 @@ echo 480 > $dev/cmaflash::current_ma # camera flash current
 echo 5000 > $dev/cmaflash::boost_mv # camera flash  voltage
 
 # Overclocking
+echo x25 > /proc/x8oc
+sleep 2
+echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold
+echo 30 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
+echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
 echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 echo 710400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
@@ -50,4 +50,4 @@ chmod 0777 /dev/oncrpc/*
 chmod 0777 /sys/class/semc/rgb_led/*
 chmod 0666 /sys/devices/platform/i2c-adapter/i2c-0/0-0036/mode
 chmod 0666 /sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity
-
+chown -R system system /sys/devices/system/cpu/cpu0/cpufreq/

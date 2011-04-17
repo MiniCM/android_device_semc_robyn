@@ -151,6 +151,8 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    LOGD("set_speaker_light_locked state->flashMode=%d, \n",
+            state->flashMode);
     int len;
     int alpha, red, green, blue;
     int blink, freq, pwm;
@@ -185,7 +187,7 @@ set_speaker_light_locked(struct light_device_t* dev,
         write_int(BLUE_LED_FILE, blue);
         write_int(PWM_FILE, 255);
         write_int(BLINK_FILE, 1);
-
+LOGD("wrote: RED_LED_FILE=%d, GREEN_LED_FILE=%d, BLUE_LED_FILE=%d, PWM_FILE=%d, BLINK_FILE=%d\n", red, green, blue, 255, 1);
     if (onMS > 0 && offMS > 0) {
         int totalMS = onMS + offMS;
 
@@ -195,7 +197,7 @@ set_speaker_light_locked(struct light_device_t* dev,
         // pwm specifies the ratio of ON versus OFF
         // pwm = 0 -> always off
         // pwm = 255 => always on
-        pwm = (onMS * 5) / totalMS;
+        //pwm = (onMS * 5) / totalMS;
 
         // the low 4 bits are ignored, so round up if necessary
 
@@ -210,6 +212,7 @@ set_speaker_light_locked(struct light_device_t* dev,
             write_int(FREQ_FILE, freq);
             write_int(PWM_FILE, pwm);
             write_int(BLINK_FILE, 1);
+LOGD("wrote: FREQ_FILE=%d, PWM_FILE=%d, BLINK_FILE=%d onMS=%d, offMS=%d\n", freq, pwm, 1, onMS, offMS);
         }
         else{ 
 //        write_int(BLINK_FILE, blink);
@@ -223,8 +226,10 @@ handle_speaker_battery_locked(struct light_device_t* dev)
 {
     if (is_lit(&g_battery)) {
         set_speaker_light_locked(dev, &g_battery);
+	LOGD("set_speaker_light_locked(dev, &g_battery)");
     } else {
         set_speaker_light_locked(dev, &g_notification);
+	LOGD("set_speaker_light_locked(dev, &g_notification)");
     }
 }
 
