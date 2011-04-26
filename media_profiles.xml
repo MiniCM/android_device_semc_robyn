@@ -86,9 +86,9 @@
                    height="480"
                    frameRate="30" />
 
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
+            <Audio codec="aac"
+                   bitRate="128000"
+                   sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
 
@@ -139,6 +139,11 @@
     <AudioEncoderCap name="amrnb" enabled="true"
         minBitRate="5525" maxBitRate="12200"
         minSampleRate="8000" maxSampleRate="8000"
+        minChannels="1" maxChannels="1" />
+		
+	<AudioEncoderCap name="aac" enabled="true"
+        minBitRate="5525" maxBitRate="128000"
+        minSampleRate="8000" maxSampleRate="48000"
         minChannels="1" maxChannels="1" />
 
     <!--
