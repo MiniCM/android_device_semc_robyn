@@ -37,6 +37,7 @@
 	rm logo.rle
 	rm default.prop
 	tar -xf /system/bin/ramdisk.tar
+	# nobodyAtall - Fix 
 	mkdir -p /minicm
 	cd /minicm
 	tar -xf /system/bin/ramdisk.tar
