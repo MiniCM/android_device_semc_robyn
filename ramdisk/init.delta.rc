@@ -121,7 +121,9 @@ on boot
     insmod /system/lib/modules/x8gesture.ko
 # insert kernel module for overclocking
     insmod /system/lib/modules/x8oc.ko
-    
+# insert kernel module for mddi fix
+    insmod /system/lib/modules/x8mddi.ko
+
 service dhcp-service /system/bin/netcfg eth0 dhcp
 	oneshot
 
