@@ -1,12 +1,27 @@
 DEVICE_PACKAGE_OVERLAYS := device/htc/x10mini/overlay
 
+# HAL libs and other system binaries
 PRODUCT_PACKAGES += \
-    librs_jni \
+    gps.x10mini \
+    gralloc.x10mini \
+    copybit.x10mini \
+    sensors.x10mini \
+    lights.x10mini \
     libcamera \
-    lights.x10mini 
+    libOmxCore \
+    libmm-omxcore
+
+# Live wallpaper packages
+PRODUCT_PACKAGES += \
+    LiveWallpapersPicker \
+    librs_jni \
+    Torch
+#    LiveWallpapers \
+#    MagicSmokeWallpapers \
+#    VisualizationWallpapers
 
 # Passion uses high-density artwork where available
-PRODUCT_LOCALES += mdpi
+#PRODUCT_LOCALES += mdpi
 
 # proprietary side of the device
 $(call inherit-product-if-exists, vendor/htc/x10mini/device_x10mini-vendor.mk)
@@ -62,6 +77,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
+
+# Turn off jni checks since they break FM Radio and Skype
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.kernel.android.checkjni=0
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)

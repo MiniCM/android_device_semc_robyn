@@ -2,6 +2,7 @@ USE_CAMERA_STUB := true
 
 # Fake building with eclair cam
 BOARD_USES_ECLAIR_LIBCAMERA := true
+BOARD_USES_ECLAIR_LIBAUDIO := true
 
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
@@ -42,7 +43,6 @@ TARGET_BOOTLOADER_BOARD_NAME := x10mini
 
 WITH_JIT := true
 ENABLE_JSC_JIT:=true
-
 
 BOARD_KERNEL_CMDLINE := mem=210M console=null androidboot.hardware=qcom no_console_suspend
 BOARD_KERNEL_BASE := 0x12e00000

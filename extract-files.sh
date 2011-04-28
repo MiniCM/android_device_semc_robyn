@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DEVICE=x10mini
-LOCAL_PROPR_DIR=~/xrecovery/backup/2011-02-06.18.11.31
+LOCAL_PROPR_DIR=~/xrecovery/x10mini/2011-02-06.18.11.31
 mkdir -p ../../../vendor/htc/$DEVICE/proprietary
 if [ $# = 1 ]
 then
@@ -323,7 +323,8 @@ PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/twofish.ko:system/lib/modules/twofish.ko \\
     device/htc/__DEVICE__/prebuilt/twofish_common.ko:system/lib/modules/twofish_common.ko \\
     device/htc/__DEVICE__/prebuilt/x8gesture.ko:system/lib/modules/x8gesture.ko \\
-    device/htc/__DEVICE__/prebuilt/x8oc.ko:system/lib/modules/x8oc.ko
+    device/htc/__DEVICE__/prebuilt/x8oc.ko:system/lib/modules/x8oc.ko \\
+    device/htc/__DEVICE__/prebuilt/x8oc.ko:system/lib/modules/x8mddi.ko
 
 PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/kexec-tool:system/bin/kexec-tool \\

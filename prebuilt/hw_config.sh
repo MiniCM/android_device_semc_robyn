@@ -55,3 +55,7 @@ chmod 0666 /sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity
 # Symlinks for compass
 ln -s /dev/akm8973_aot /dev/akm8975_aot
 ln -s /dev/akm8973_daemon /dev/akm8975_daemon
+
+# /sdcard legacy support
+mkdir /sdcard
+ln -s /mnt/sdcard /sdcard
