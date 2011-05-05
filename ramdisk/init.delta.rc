@@ -87,9 +87,6 @@ on boot
 
 # Fake DT module
     insmod /system/lib/modules/x8gesture.ko
-# Overclocking module
-    insmod /system/lib/modules/x8oc.ko 
-    echo x25 > /proc/x8oc
 # insert kernel module for mddi fix
     insmod /system/lib/modules/x8mddi.ko
 
