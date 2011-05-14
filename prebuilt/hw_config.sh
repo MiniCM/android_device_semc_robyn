@@ -29,14 +29,14 @@ echo 480 > $dev/cmaflash::current_ma # camera flash current
 echo 5000 > $dev/cmaflash::boost_mv # camera flash  voltage
 
 # Overclocking
-echo x25 > /proc/x8oc
+echo x24 > /proc/x8oc
 sleep 2
 echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold
 echo 30 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
 echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
 echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-echo 710400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 691200 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
 # Needed by radio
 mkdir /data/radio
