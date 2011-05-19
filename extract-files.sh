@@ -323,7 +323,8 @@ PRODUCT_COPY_FILES += \\
     device/htc/__DEVICE__/prebuilt/twofish.ko:system/lib/modules/twofish.ko \\
     device/htc/__DEVICE__/prebuilt/twofish_common.ko:system/lib/modules/twofish_common.ko \\
     device/htc/__DEVICE__/prebuilt/x8gesture.ko:system/lib/modules/x8gesture.ko \\
-    device/htc/__DEVICE__/prebuilt/x8oc.ko:system/lib/modules/x8oc.ko \\
+    device/htc/__DEVICE__/prebuilt/x10minioc.ko:system/lib/modules/x10minioc.ko \\
+    device/htc/__DEVICE__/prebuilt/x10miniuv.ko:system/lib/modules/x10miniuv.ko \\
     device/htc/__DEVICE__/prebuilt/x8mddi.ko:system/lib/modules/x8mddi.ko
 
 PRODUCT_COPY_FILES += \\

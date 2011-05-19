@@ -8,6 +8,7 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BUILD_LIBCAMERA := true
 BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
+USE_CAMERA_STUB:= false
 
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_HAVE_BLUETOOTH := true
@@ -28,7 +29,9 @@ WIFI_DRIVER_MODULE_NAME := tiwlan_drv
 WIFI_FIRMWARE_LOADER := wlan_loader
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
+
+TARGET_USE_CUSTOM_LUN_FILE_PATH := true
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 
 # inherit from the proprietary version
 -include vendor/se/x8/BoardConfigVendor.mk
@@ -66,9 +69,13 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := x10mini
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_RECOVERY := true
+#TARGET_NO_RECOVERY := true
 TARGET_NO_KERNEL := true
 
 BUILD_WITHOUT_PV := true
 
 WITH_DEXPREOPT := true
+
+BOARD_LDPI_RECOVERY := true
+BOARD_HAS_JANKY_BACKBUFFER := true
+BOARD_USE_SCREENCAP := true
