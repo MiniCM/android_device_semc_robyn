@@ -172,6 +172,7 @@ union zoomimage
  */
 
 static const camera_size_type preview_sizes[] = {
+    { 640, 480 }, // VGA
     { 480, 320 }, // HVGA
     { 384, 288 },
     { 352, 288 }, // CIF
