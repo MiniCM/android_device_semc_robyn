@@ -146,7 +146,7 @@
     <!-- Defines the shutdown options shown in the reboot dialog. -->
     <array name="shutdown_reboot_options">
         <item>Reboot</item>
-        <item>xRecovery</item>
+        <item>Recovery</item>
         <!-- <item>Bootloader</item> -->
     </array>
 
