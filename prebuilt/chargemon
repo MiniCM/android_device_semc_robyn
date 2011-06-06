@@ -1,5 +1,4 @@
-#!/system/bin/busybox sh
-	/system/bin/charger
+#!/system/xbin/sh
 	cat /dev/input/event1 > /dev/keycheck&
 	sleep 3
 	kill -9 $!
@@ -18,7 +17,12 @@
 	cd /
 	rm -r /sbin
 	rm -f etc
-	tar -xf /system/bin/xrecovery.tar
+	if [ -f /system/bin/recovery.tar ]
+	then
+		tar -xf /system/bin/recovery.tar
+	else
+		tar -xf /system/bin/xrecovery.tar
+	fi
 
 	# Umount /system
 	umount -l /dev/block/mtdblock0
@@ -27,6 +31,8 @@
 	chroot / /init
 
 	fi
+	# Continue booting
+	/system/bin/charger
 	
 	# remount rootfs rw
 	mount -o remount,rw rootfs /

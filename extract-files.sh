@@ -411,12 +411,14 @@ PRODUCT_COPY_FILES += \\
     device/se/__DEVICE__/prebuilt/tiwlan_loader:system/bin/tiwlan_loader \\
     device/se/__DEVICE__/prebuilt/verify_odex:system/bin/verify_odex \\
     device/se/__DEVICE__/prebuilt/xrecovery.tar:system/bin/xrecovery.tar \\
+    device/se/__DEVICE__/prebuilt/recovery.tar:system/bin/recovery.tar \\
     device/se/__DEVICE__/prebuilt/hw_config.sh:system/etc/hw_config.sh \\
     device/se/__DEVICE__/prebuilt/com.dsi.ant.antradio_library.jar:system/framework/com.dsi.ant.antradio_library.jar \\
     device/se/__DEVICE__/prebuilt/com.sonyericsson.suquashi.jar:system/framework/com.sonyericsson.suquashi.jar \\
     device/se/__DEVICE__/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \\
     device/se/__DEVICE__/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar \\
     device/se/__DEVICE__/prebuilt/dhcpcd.conf:system/etc/dhcpcd.conf \\
+    device/se/__DEVICE__/prebuilt/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \\
     device/se/__DEVICE__/prebuilt/vold.fstab:system/etc/vold.fstab
 
 # Keyboard layouts and T9

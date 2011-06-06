@@ -29,6 +29,7 @@ WIFI_DRIVER_MODULE_NAME := tiwlan_drv
 WIFI_FIRMWARE_LOADER := wlan_loader
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+TARGET_USES_OLD_LIBSENSORS_HAL:=true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := true
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
