@@ -1,4 +1,4 @@
-DEVICE_PACKAGE_OVERLAYS := device/htc/x10mini/overlay
+DEVICE_PACKAGE_OVERLAYS := device/se/x10mini/overlay
 
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
@@ -24,7 +24,7 @@ PRODUCT_PACKAGES += \
 #PRODUCT_LOCALES += mdpi
 
 # proprietary side of the device
-$(call inherit-product-if-exists, vendor/htc/x10mini/device_x10mini-vendor.mk)
+$(call inherit-product-if-exists, vendor/se/x10mini/device_x10mini-vendor.mk)
 
 # from device_dream_sapphire.mk
 PRODUCT_COPY_FILES += \
@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
 # x10mini specific gps.conf
 
 PRODUCT_COPY_FILES += \
-    device/htc/x10minic/gps.conf:system/etc/gps.conf
+    device/se/x10mini/gps.conf:system/etc/gps.conf
 
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
@@ -58,7 +58,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=45
 
-# Configure agps cell location.  Must have Eclair libhtc_ril.so.
+# Configure agps cell location.  Must have Eclair libse_ril.so.
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=2 \
@@ -76,7 +76,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/htc/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
+    device/se/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
 
 # Turn off jni checks since they break FM Radio and Skype
 PRODUCT_PROPERTY_OVERRIDES += \

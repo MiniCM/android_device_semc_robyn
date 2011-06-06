@@ -52,4 +52,4 @@ $(file) : $(LOCAL_PATH)/h2w_headset.kl | $(ACP)
 #$(file) : $(LOCAL_PATH)/build.x10mini.prop | $(ACP)
 #	$(transform-prebuilt-to-target)
 
--include vendor/htc/x10mini/AndroidBoardVendor.mk
+-include vendor/se/x10mini/AndroidBoardVendor.mk

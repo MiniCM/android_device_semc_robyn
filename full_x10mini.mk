@@ -1,6 +1,6 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, device/htc/x10mini/device_x10mini_eu.mk)
+$(call inherit-product, device/se/x10mini/device_x10mini_eu.mk)
 
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 PRODUCT_COPY_FILES += \
-    device/htc/x10mini/placeholder:system/sd/placeholder
+    device/se/x10mini/placeholder:system/sd/placeholder
     
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -59,7 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=45
 
-# Configure agps cell location.  Must have Eclair libhtc_ril.so.
+# Configure agps cell location.  Must have Eclair libse_ril.so.
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=2 \
@@ -105,7 +105,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/htc/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
+    device/se/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
