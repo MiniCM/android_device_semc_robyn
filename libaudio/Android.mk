@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),shakira)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
 
 
 LOCAL_PATH:= $(call my-dir)
