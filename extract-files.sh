@@ -513,6 +513,10 @@ PRODUCT_COPY_FILES += \\
     device/se/__DEVICE__/prebuilt/usr/keyboard-config/languages/bul.xml:system/usr/keyboard-config/languages/bul.xml \\
     device/se/__DEVICE__/prebuilt/usr/keyboard-config/languages/dan.xml:system/usr/keyboard-config/languages/dan.xml
 
+# Extra Cyanogen vendor files
+PRODUCT_COPY_FILES += \\
+    vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 EOF
 
 ./setup-makefiles.sh
