@@ -50,15 +50,10 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-    	<item>11</item>
-    	<item>41</item>
-    	<item>91</item>
-    	<item>161</item>
-    	<item>226</item>
-    	<item>321</item>
-    	<item>641</item>
-    	<item>1281</item>
-    	<item>2601</item>
+        <item>200</item>
+        <item>400</item>
+        <item>1000</item>
+        <item>3000</item>
     </integer-array>
 
 
@@ -67,16 +62,11 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-    	<item>8</item>
-    	<item>16</item>
-    	<item>34</item>
-    	<item>61</item>
-    	<item>96</item>
-    	<item>138</item>
-    	<item>167</item>
-    	<item>195</item>
-    	<item>227</item>
-    	<item>255</item>
+        <item>35</item>
+        <item>55</item>
+        <item>70</item>
+        <item>70</item>
+        <item>250</item>
     </integer-array>
 
 
@@ -85,16 +75,11 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-    	<item>255</item>
-    	<item>255</item>
-    	<item>255</item>
-    	<item>255</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
+        <item>255</item>
+        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </integer-array>
 
 
@@ -104,16 +89,11 @@
          Passion has no keyboard so all values are zero.
     -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
-    	<item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </integer-array>
 
     <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
@@ -156,15 +136,17 @@
          tethering on a new interface called "foo2" add <item>"foo\\d"</item> to the array -->
     <string-array translatable="false" name="config_tether_upstream_regexs">
         <item>"rmnet\\d"</item>
-        <item>"tiwlan\\d"</item>
+        <item>"wlan\\d"</item>
+    </string-array>
+
+    <!-- List of regexpressions describing the interface (if any) that represent tetherable
+         Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
+         should be empty.  An example would be "softap.*" -->
+    <string-array translatable="false" name="config_tether_wifi_regexs">
+        <item>"wl0.1"</item>
     </string-array>
 
     <!-- Boolean indicating if we require the use of DUN on mobile for tethering -->
-    <bool translatable="false" name="config_tether_dun_required">false</bool>
-
-    <!--
-     Boolean indicating if we require the use of DUN on mobile for tethering 
-    -->
     <bool translatable="false" name="config_tether_dun_required">false</bool>
 
 </resources>

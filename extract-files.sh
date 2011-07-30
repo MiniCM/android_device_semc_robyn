@@ -100,7 +100,7 @@ then
     adb pull /system/lib/libsystemconnector_hal_jni.so ../../../vendor/se/$DEVICE/proprietary/libsystemconnector_hal_jni.so
     adb pull /system/lib/libgsdi_exp.so ../../../vendor/se/$DEVICE/proprietary/libgsdi_exp.so
     adb pull /system/lib/libauth.so ../../../vendor/se/$DEVICE/proprietary/libauth.so
-    adb pull /system/lib/libskiagl.so ../../../vendor/se/$DEVICE/proprietary/libskiagl.so
+    #adb pull /system/lib/libskiagl.so ../../../vendor/se/$DEVICE/proprietary/libskiagl.so
     adb pull /system/lib/libmmjpeg.so ../../../vendor/se/$DEVICE/proprietary/libmmjpeg.so
     adb pull /system/lib/libwpa_client.so ../../../vendor/se/$DEVICE/proprietary/libwpa_client.so
     adb pull /system/lib/libaudio.so ../../../vendor/se/$DEVICE/proprietary/libaudio.so
@@ -214,7 +214,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libsystemconnector_hal_jni.so ../../../vendor/se/$DEVICE/proprietary/libsystemconnector_hal_jni.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libgsdi_exp.so ../../../vendor/se/$DEVICE/proprietary/libgsdi_exp.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libauth.so ../../../vendor/se/$DEVICE/proprietary/libauth.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libskiagl.so ../../../vendor/se/$DEVICE/proprietary/libskiagl.so
+    #cp -pr $LOCAL_PROPR_DIR/system/lib/libskiagl.so ../../../vendor/se/$DEVICE/proprietary/libskiagl.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmjpeg.so ../../../vendor/se/$DEVICE/proprietary/libmmjpeg.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libwpa_client.so ../../../vendor/se/$DEVICE/proprietary/libwpa_client.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libaudio.so ../../../vendor/se/$DEVICE/proprietary/libaudio.so
@@ -373,7 +373,6 @@ PRODUCT_COPY_FILES += \\
     vendor/se/__DEVICE__/proprietary/libsystemconnector_hal_jni.so:system/lib/libsystemconnector_hal_jni.so \\
     vendor/se/__DEVICE__/proprietary/libgsdi_exp.so:system/lib/libgsdi_exp.so \\
     vendor/se/__DEVICE__/proprietary/libauth.so:system/lib/libauth.so \\
-    vendor/se/__DEVICE__/proprietary/libskiagl.so:system/lib/libskiagl.so \\
     vendor/se/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
     vendor/se/__DEVICE__/proprietary/libwpa_client.so:system/lib/libwpa_client.so \\
     vendor/se/__DEVICE__/proprietary/libaudio.so:system/lib/libaudio.so \\
@@ -391,6 +390,9 @@ PRODUCT_COPY_FILES += \\
     vendor/se/__DEVICE__/proprietary/libdll.so:system/lib/libdll.so \\
     vendor/se/__DEVICE__/proprietary/libdsm.so:system/lib/libdsm.so \\
     vendor/se/__DEVICE__/proprietary/libdss.so:system/lib/libdss.so
+
+#PRODUCT_COPY_FILES += \\
+#    vendor/se/__DEVICE__/proprietary/libskiagl.so:system/lib/libskiagl.so \\
 
 # Extra prebuilt binaries
 PRODUCT_COPY_FILES += \\
