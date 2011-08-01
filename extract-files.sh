@@ -48,7 +48,7 @@ then
     adb pull /system/lib/libfmrx.so ../../../vendor/se/$DEVICE/proprietary/libfmrx.so
     adb pull /system/lib/liboem_rapi.so ../../../vendor/se/$DEVICE/proprietary/liboem_rapi.so
     adb pull /system/lib/libZiEngine.so ../../../vendor/se/$DEVICE/proprietary/libZiEngine.so
-    #adb pull /system/lib/libbluedroid.so ../../../vendor/se/$DEVICE/proprietary/libbluedroid.so
+    adb pull /system/lib/libbluedroid.so ../../../vendor/se/$DEVICE/proprietary/libbluedroid.so
     adb pull /system/lib/libaudioeq.so ../../../vendor/se/$DEVICE/proprietary/libaudioeq.so
     #adb pull /system/etc/AudioFilter.csv ../../../vendor/se/$DEVICE/proprietary/AudioFilter.csv
     adb pull /system/lib/libmm-adspsvc.so ../../../vendor/se/$DEVICE/proprietary/libmm-adspsvc.so
@@ -162,7 +162,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libfmrx.so ../../../vendor/se/$DEVICE/proprietary/libfmrx.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/liboem_rapi.so ../../../vendor/se/$DEVICE/proprietary/liboem_rapi.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libZiEngine.so ../../../vendor/se/$DEVICE/proprietary/libZiEngine.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libbluedroid.so ../../../vendor/se/$DEVICE/proprietary/libbluedroid.so
+    cp -pr $LOCAL_PROPR_DIR/system/lib/libbluedroid.so ../../../vendor/se/$DEVICE/proprietary/libbluedroid.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libaudioeq.so ../../../vendor/se/$DEVICE/proprietary/libaudioeq.so
     #cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilter.csv ../../../vendor/se/$DEVICE/proprietary/AudioFilter.csv
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmm-adspsvc.so ../../../vendor/se/$DEVICE/proprietary/libmm-adspsvc.so
@@ -297,10 +297,8 @@ PRODUCT_COPY_FILES += \\
     vendor/se/__DEVICE__/proprietary/libOmxCore.so:system/lib/libOmxCore.so \\
     vendor/se/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
     vendor/se/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
-    vendor/se/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
-
-
-#    vendor/se/__DEVICE__/proprietary/libbluedroid.so:system/lib/libbluedroid.so \\
+    vendor/se/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
+    vendor/se/__DEVICE__/proprietary/libbluedroid.so:system/lib/libbluedroid.so
 
 # Ril files
 PRODUCT_COPY_FILES += \\
@@ -514,6 +512,10 @@ PRODUCT_COPY_FILES += \\
     device/se/__DEVICE__/prebuilt/usr/keyboard-config/languages/isl.xml:system/usr/keyboard-config/languages/isl.xml \\
     device/se/__DEVICE__/prebuilt/usr/keyboard-config/languages/bul.xml:system/usr/keyboard-config/languages/bul.xml \\
     device/se/__DEVICE__/prebuilt/usr/keyboard-config/languages/dan.xml:system/usr/keyboard-config/languages/dan.xml
+
+# sh compatible with chargemon
+PRODUCT_COPY_FILES += \\
+    device/se/__DEVICE__/prebuilt/sh:system/xbin/sh
 
 # Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \\
