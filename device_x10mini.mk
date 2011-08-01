@@ -9,7 +9,8 @@ PRODUCT_PACKAGES += \
     lights.x10mini \
     libcamera \
     libOmxCore \
-    libmm-omxcore
+    libmm-omxcore \
+    screencap
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
