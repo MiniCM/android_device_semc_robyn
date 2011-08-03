@@ -288,6 +288,7 @@ PRODUCT_COPY_FILES += \\
     vendor/se/__DEVICE__/proprietary/libgps.so:system/lib/libgps.so \\
     vendor/se/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
     vendor/se/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
+    vendor/se/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/se/__DEVICE__/proprietary/libfm_stack.so:system/lib/libfm_stack.so \\
     vendor/se/__DEVICE__/proprietary/libfmrx.so:system/lib/libfmrx.so \\
     vendor/se/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
