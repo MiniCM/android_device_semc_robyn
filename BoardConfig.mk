@@ -6,8 +6,8 @@ BOARD_USES_ECLAIR_LIBAUDIO := true
 
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
-BOARD_USES_QCOM_LIBRPC := true
-BOARD_USE_QCOM_PMEM := true
+#BOARD_USES_QCOM_LIBRPC := true
+#BOARD_USE_QCOM_PMEM := true
 BUILD_LIBCAMERA := true
 BOARD_CAMERA_LIBRARIES := libcameraservice libcamera
 USE_CAMERA_STUB:= false
@@ -22,6 +22,7 @@ BOARD_USES_GENERIC_AUDIO := false
 
 BOARD_EGL_CFG := device/se/x10mini/egl.cfg
 BOARD_NO_RGBX_8888 := true
+TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WLAN_DEVICE := wl1271
@@ -38,8 +39,7 @@ TARGET_USES_OLD_LIBSENSORS_HAL:=true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := true
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-
-TARGET_RECOVERY_PRE_COMMAND := "mkdir -p /data/local/tmp; touch /data/local/tmp/xrecovery;sync;"
+TARGET_USE_CUSTOM_VIBRATOR_FILE_PATH := /sys/devices/platform/msm_pmic_vibrator/enable
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
@@ -85,6 +85,7 @@ BUILD_WITHOUT_PV := true
 
 WITH_DEXPREOPT := true
 
+TARGET_RECOVERY_PRE_COMMAND := "mkdir -p /data/local/tmp; touch /data/local/tmp/xrecovery;sync;"
 BOARD_HAS_BOOT_RECOVERY := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_NO_MISC_PARTITION := true
