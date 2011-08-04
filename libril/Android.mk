@@ -1,4 +1,6 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),robyn)
+
+MODULE.TARGET.SHARED_LIBRARIES.libril :=
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)

@@ -1,14 +1,14 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, device/se/x10mini/device_x10mini_eu.mk)
+$(call inherit-product, device/semc/robyn/device_robyn_eu.mk)
 
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
-    gps.x10mini \
-    gralloc.x10mini \
-    copybit.x10mini \
-#    sensors.x10mini \
-    lights.x10mini \
+    gps.robyn \
+    gralloc.robyn \
+    copybit.robyn \
+#    sensors.robyn \
+#    lights.robyn \
     libOmxCore \
     libmm-omxcore
 
@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 PRODUCT_COPY_FILES += \
-    device/se/x10mini/placeholder:system/sd/placeholder
+    device/semc/robyn/placeholder:system/sd/placeholder
     
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -105,7 +105,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/se/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
+    device/semc/robyn/media_profiles.xml:/system/etc/media_profiles.xml
 
 # stuff common to all HTC phones
 $(call inherit-product, device/htc/common/common.mk)
@@ -113,8 +113,8 @@ $(call inherit-product, device/htc/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_x10mini
-PRODUCT_DEVICE := x10mini
+PRODUCT_NAME := full_robyn
+PRODUCT_DEVICE := robyn
 PRODUCT_MODEL := Full Android on X10 mini
 PRODUCT_DEFAULT_WIFI_CHANNELS := 14
 

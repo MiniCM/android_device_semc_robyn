@@ -15,19 +15,19 @@
 LOCAL_PATH := $(call my-dir)
 
 
-file := $(TARGET_OUT_KEYLAYOUT)/x10mini-keypad.kl
+file := $(TARGET_OUT_KEYLAYOUT)/robyn-keypad.kl
 ALL_PREBUILT += $(file)
 LOCAL_MODULE_TAGS := optional
-$(file) : $(LOCAL_PATH)/x10mini-keypad.kl | $(ACP)
+$(file) : $(LOCAL_PATH)/robyn-keypad.kl | $(ACP)
 	$(transform-prebuilt-to-target)
 
-#file := $(TARGET_ROOT_OUT)/init.x10mini.rc
+#file := $(TARGET_ROOT_OUT)/init.robyn.rc
 #ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/init.x10mini.rc | $(ACP)
+#$(file) : $(LOCAL_PATH)/init.robyn.rc | $(ACP)
 #	$(transform-prebuilt-to-target)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := x10mini-keypad.kcm
+LOCAL_SRC_FILES := robyn-keypad.kcm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_KEY_CHAR_MAP)
         
@@ -47,9 +47,9 @@ $(file) : $(LOCAL_PATH)/h2w_headset.kl | $(ACP)
 #include $(BUILD_PREBUILT)
 
 # the system properties for each device, loaded by init
-#file := $(TARGET_OUT)/build.x10mini.prop
+#file := $(TARGET_OUT)/build.robyn.prop
 #ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/build.x10mini.prop | $(ACP)
+#$(file) : $(LOCAL_PATH)/build.robyn.prop | $(ACP)
 #	$(transform-prebuilt-to-target)
 
--include vendor/se/x10mini/AndroidBoardVendor.mk
+-include vendor/semc/robyn/AndroidBoardVendor.mk

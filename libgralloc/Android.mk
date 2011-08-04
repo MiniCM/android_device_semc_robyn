@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),robyn)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -32,7 +32,7 @@ LOCAL_SRC_FILES := 	\
 	mapper.cpp		\
 	pmemalloc.cpp
 	
-LOCAL_MODULE := gralloc.x10mini
+LOCAL_MODULE := gralloc.robyn
 LOCAL_CFLAGS:= -DLOG_TAG=\"$(TARGET_BOARD_PLATFORM).gralloc\"
 
 LOCAL_CFLAGS += -DTARGET_MSM7x27

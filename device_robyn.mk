@@ -1,12 +1,12 @@
-DEVICE_PACKAGE_OVERLAYS := device/se/x10mini/overlay
+DEVICE_PACKAGE_OVERLAYS := device/semc/robyn/overlay
 
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
-    gps.x10mini \
-    gralloc.x10mini \
-    copybit.x10mini \
-    sensors.x10mini \
-    lights.x10mini \
+    gps.robyn \
+    gralloc.robyn \
+    copybit.robyn \
+    sensors.robyn \
+    #lights.robyn \
     libcamera \
     libOmxCore \
     libmm-omxcore \
@@ -25,7 +25,7 @@ PRODUCT_PACKAGES += \
 #PRODUCT_LOCALES += mdpi
 
 # proprietary side of the device
-$(call inherit-product-if-exists, vendor/se/x10mini/device_x10mini-vendor.mk)
+$(call inherit-product-if-exists, vendor/semc/robyn/device_robyn-vendor.mk)
 
 # from device_dream_sapphire.mk
 PRODUCT_COPY_FILES += \
@@ -36,10 +36,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
-# x10mini specific gps.conf
+# robyn specific gps.conf
 
 PRODUCT_COPY_FILES += \
-    device/se/x10mini/gps.conf:system/etc/gps.conf
+    device/semc/robyn/gps.conf:system/etc/gps.conf
 
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.media.dec.jpeg.memcap=10000000
@@ -77,14 +77,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/se/x10mini/media_profiles.xml:/system/etc/media_profiles.xml
+    device/semc/robyn/media_profiles.xml:/system/etc/media_profiles.xml
 
 # Turn off jni checks since they break FM Radio and Skype
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/se/x10mini/kernel
+LOCAL_KERNEL := device/semc/robyn/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif

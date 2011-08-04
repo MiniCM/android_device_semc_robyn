@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),x10mini)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),robyn)
 
 
 LOCAL_PATH:= $(call my-dir)
