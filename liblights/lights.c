@@ -15,7 +15,7 @@
  */
 
 
-// #define LOG_NDEBUG 0
+#define LOG_NDEBUG 1
 #define LOG_TAG "lights"
 
 #include <cutils/log.h>
@@ -45,21 +45,23 @@ static int g_backlight = 255;
 static int g_buttons = 1;
 static int g_attention = 0;
 
-char const*const RED_LED_FILE    = "/sys/class/semc/rgb_led/red:brightness";
-char const*const GREEN_LED_FILE  = "/sys/class/semc/rgb_led/green:brightness";
-char const*const BLUE_LED_FILE   = "/sys/class/semc/rgb_led/blue:brightness";
-char const*const FREQ_FILE       = "/sys/class/semc/rgb_led/frequency";
-char const*const PWM_FILE        = "/sys/class/semc/rgb_led/pwm";
-char const*const BLINK_FILE      = "/sys/class/semc/rgb_led/blink";
-char const*const POWER_FILE      = "/sys/class/semc/rgb_led/power";
+char const*const RED_LED_FILE    = "/sys/devices/virtual/misc/rgb_led/rgb_led/red:brightness";
+char const*const GREEN_LED_FILE  = "/sys/devices/virtual/misc/rgb_led/rgb_led/green:brightness";
+char const*const BLUE_LED_FILE   = "/sys/devices/virtual/misc/rgb_led/rgb_led/blue:brightness";
+char const*const FREQ_FILE       = "/sys/devices/virtual/misc/rgb_led/rgb_led/frequency";
+char const*const PWM_FILE        = "/sys/devices/virtual/misc/rgb_led/rgb_led/pwm";
+char const*const BLINK_FILE      = "/sys/devices/virtual/misc/rgb_led/rgb_led/blink";
+char const*const POWER_FILE      = "/sys/devices/virtual/misc/rgb_led/rgb_led/power";
 
-//char const*const LCD_FILE        = "/sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity";
+static int LCD_FILE = "/sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity";
 
-static int  LCD_FILE        = "/sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity";
+char const*const ALS_FILE = "/sys/devices/platform/i2c-adapter/i2c-0/0-0036/mode";
 
-char const*const ALS_FILE        = "/sys/devices/platform/i2c-adapter/i2c-0/0-0036/mode";
 
 char const*const BUTTON_FILE     = "";
+
+char const*const FLASH_FILE     = "/sys/devices/platform/msm_pmic_flash_led/cmaflash:enable";
+char const*const SPOTLIGHT_FILE     = "/sys/devices/platform/msm_pmic_flash_led/spotlight:enable";
 
 /**
  * device methods
@@ -112,22 +114,10 @@ set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
-    int als_mode;
 
     int brightness = rgb_to_brightness(state);
 
-    switch(state->brightnessMode) {
-        case BRIGHTNESS_MODE_SENSOR:
-            als_mode = AUTOMATIC;
-            break;
-        case BRIGHTNESS_MODE_USER:
-        default:
-            als_mode = MANUAL;
-            break;
-    }
-
     pthread_mutex_lock(&g_lock);
-    err = write_int(ALS_FILE, als_mode);
     err = write_int(LCD_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
 
@@ -191,14 +181,12 @@ set_speaker_light_locked(struct light_device_t* dev,
 
         // the LED appears to blink about once per second if freq is 20
         // 1000ms / 20 = 50
-        freq = (onMS * 5) / totalMS;
+        freq = (onMS / 200) * 5;
         // pwm specifies the ratio of ON versus OFF
         // pwm = 0 -> always off
         // pwm = 255 => always on
-        pwm = (onMS * 5) / totalMS;
-
+        pwm = (onMS / 100) * 5;
         // the low 4 bits are ignored, so round up if necessary
-
         blink = 1;
     } else {
         blink = 0;
@@ -210,9 +198,6 @@ set_speaker_light_locked(struct light_device_t* dev,
             write_int(FREQ_FILE, freq);
             write_int(PWM_FILE, pwm);
             write_int(BLINK_FILE, 1);
-        }
-        else{ 
-//        write_int(BLINK_FILE, blink);
         }
 
     return 0;

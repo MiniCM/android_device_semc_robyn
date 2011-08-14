@@ -63,3 +63,9 @@ ln -s /dev/akm8973_daemon /dev/akm8975_daemon
 # /sdcard legacy support
 mkdir /sdcard
 ln -s /mnt/sdcard /sdcard
+
+mount -o rw,remount -t yaffs2 /dev/block/mtdblock0 /system
+chmod u+s /system/bin/charger
+mount -o ro,remount -t yaffs2 /dev/block/mtdblock0 /system
+rm -rf /data/local/download/*
+

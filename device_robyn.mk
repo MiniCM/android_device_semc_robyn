@@ -6,7 +6,7 @@ PRODUCT_PACKAGES += \
     gralloc.robyn \
     copybit.robyn \
     sensors.robyn \
-    #lights.robyn \
+    lights.robyn \
     libcamera \
     libOmxCore \
     libmm-omxcore \
@@ -16,13 +16,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni \
-    Torch
-#    LiveWallpapers \
-#    MagicSmokeWallpapers \
-#    VisualizationWallpapers
+    LiveWallpapers \
+    MagicSmokeWallpapers \
+    VisualizationWallpapers
 
-# Passion uses high-density artwork where available
-#PRODUCT_LOCALES += mdpi
+# Extra packages
+PRODUCT_PACKAGES += \
+    Torch \
+    ADWLauncher
 
 # proprietary side of the device
 $(call inherit-product-if-exists, vendor/semc/robyn/device_robyn-vendor.mk)

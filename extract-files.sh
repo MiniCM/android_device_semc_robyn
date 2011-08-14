@@ -47,7 +47,7 @@ then
     adb pull /system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
     adb pull /system/lib/liboem_rapi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboem_rapi.so
     adb pull /system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    adb pull /system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
+    #adb pull /system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
     adb pull /system/lib/libaudioeq.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudioeq.so
     #adb pull /system/etc/AudioFilter.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilter.csv
     adb pull /system/lib/libmm-adspsvc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmm-adspsvc.so
@@ -148,7 +148,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/liboem_rapi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboem_rapi.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
+    #cp -pr $LOCAL_PROPR_DIR/system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libaudioeq.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudioeq.so
     #cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilter.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilter.csv
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmm-adspsvc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmm-adspsvc.so
@@ -271,8 +271,13 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libOmxCore.so:system/lib/libOmxCore.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libbluedroid.so:system/lib/libbluedroid.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
+
+
+# Removed binaries and libraries
+#PRODUCT_COPY_FILES += \\
+#    device/__VENDOR__/__DEVICE__/prebuilt/netcfg:system/bin/netcfg \\
+#    vendor/__VENDOR__/__DEVICE__/proprietary/libbluedroid.so:system/lib/libbluedroid.so
 
 # Ril files
 PRODUCT_COPY_FILES += \\
@@ -362,7 +367,6 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/chargemon:system/bin/chargemon \\
     device/__VENDOR__/__DEVICE__/prebuilt/charger:system/bin/charger \\
     device/__VENDOR__/__DEVICE__/prebuilt/hciattach:system/bin/hciattach \\
-    device/__VENDOR__/__DEVICE__/prebuilt/netcfg:system/bin/netcfg \\
     device/__VENDOR__/__DEVICE__/prebuilt/property.tar:system/bin/property.tar \\
     device/__VENDOR__/__DEVICE__/prebuilt/qmuxd:system/bin/qmuxd \\
     device/__VENDOR__/__DEVICE__/prebuilt/ramdisk.tar:system/bin/ramdisk.tar \\
