@@ -11,6 +11,7 @@ then
     adb pull /system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
     chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
     adb pull /system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary/01_qcomm_omx.cfg
+    adb pull /system/etc/tiwlan.ini ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan.ini
     adb pull /system/etc/tiwlan_firmware.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_firmware.bin
     adb pull /system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/TIInit_7.2.31.bts
     adb pull /system/etc/firmware/fm_rx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.1.bts
@@ -88,7 +89,6 @@ then
     adb pull /system/lib/libgsdi_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsdi_exp.so
     adb pull /system/lib/libauth.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libauth.so
     adb pull /system/lib/libmmjpeg.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmjpeg.so
-    adb pull /system/lib/libwpa_client.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwpa_client.so
     adb pull /system/lib/libaudio.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudio.so
     adb pull /system/lib/libreference-ril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libreference-ril.so
     adb pull /system/lib/libmmipl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmipl.so
@@ -112,6 +112,7 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
     chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
     cp -pr $LOCAL_PROPR_DIR/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary/01_qcomm_omx.cfg
+    cp -pr $LOCAL_PROPR_DIR/system/etc/tiwlan.ini ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan.ini
     cp -pr $LOCAL_PROPR_DIR/system/etc/tiwlan_firmware.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_firmware.bin
     cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/TIInit_7.2.31.bts
     cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fm_rx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.1.bts
@@ -189,7 +190,6 @@ else
     cp -pr $LOCAL_PROPR_DIR/system/lib/libgsdi_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsdi_exp.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libauth.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libauth.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmjpeg.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmjpeg.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libwpa_client.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwpa_client.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libaudio.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudio.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libreference-ril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libreference-ril.so
     cp -pr $LOCAL_PROPR_DIR/system/lib/libmmipl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmipl.so
@@ -232,6 +232,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/mm-venc-omx-test:system/bin/mm-venc-omx-test \\
     vendor/__VENDOR__/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \\
     vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan_firmware.bin:system/etc/tiwlan_firmware.bin \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan.ini:system/etc/tiwlan.ini \\
     vendor/__VENDOR__/__DEVICE__/proprietary/TIInit_7.2.31.bts:system/etc/firmware/TIInit_7.2.31.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_rx_init_1273.1.bts:system/etc/firmware/fm_rx_init_1273.1.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \\
@@ -313,7 +314,6 @@ PRODUCT_COPY_FILES += \\
 
 # Wpa-supplicant
 PRODUCT_COPY_FILES += \\
-    device/__VENDOR__/__DEVICE__/prebuilt/wpa_supplicant:system/bin/wpa_supplicant \\
     device/__VENDOR__/__DEVICE__/prebuilt/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # Extra libs to pull from device
@@ -341,7 +341,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libgsdi_exp.so:system/lib/libgsdi_exp.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libauth.so:system/lib/libauth.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libwpa_client.so:system/lib/libwpa_client.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libaudio.so:system/lib/libaudio.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libreference-ril.so:system/lib/libreference-ril.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
