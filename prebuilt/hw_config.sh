@@ -44,6 +44,9 @@ echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
 echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 echo 710400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
+# Smartass governor
+insmod /system/lib/modules/ax8_smartass.ko
+
 # Needed by radio
 mkdir /data/radio
 chmod 0777 /data/radio

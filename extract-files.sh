@@ -302,6 +302,7 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/modules/x8gesture.ko:system/lib/modules/x8gesture.ko \\
     device/__VENDOR__/__DEVICE__/modules/x10minioc.ko:system/lib/modules/x10minioc.ko \\
     device/__VENDOR__/__DEVICE__/modules/x10miniuv.ko:system/lib/modules/x10miniuv.ko \\
+    device/__VENDOR__/__DEVICE__/modules/ax8_smartass.ko:system/lib/modules/ax8_smartass.ko \\
     device/__VENDOR__/__DEVICE__/modules/x8mddi.ko:system/lib/modules/x8mddi.ko
 
 PRODUCT_COPY_FILES += \\
