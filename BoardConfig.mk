@@ -87,9 +87,9 @@ TARGET_NO_RADIOIMAGE := true
 
 BUILD_WITHOUT_PV := true
 
-WITH_DEXPREOPT := true
+WITH_DEXPREOPT := false
 
-TARGET_RECOVERY_PRE_COMMAND := "mkdir -p /data/local/tmp; touch /data/local/tmp/xrecovery;sync;"
+TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;mkdir -p /data/local/tmp;touch /data/local/tmp/xrecovery;sync;"
 BOARD_HAS_BOOT_RECOVERY := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -101,3 +101,6 @@ BOARD_USE_SCREENCAP := true
 
 # A custom ota package maker for a device without a boot partition
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/robyn/releasetools/semc_ota_from_target_files
+
+# Vibrator
+BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/semc/robyn/vibrator.c

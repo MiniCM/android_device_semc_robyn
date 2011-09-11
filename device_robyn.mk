@@ -10,7 +10,8 @@ PRODUCT_PACKAGES += \
     libcamera \
     libOmxCore \
     libmm-omxcore \
-    screencap
+    screencap \
+    hostap
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
@@ -50,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libargs=-d /dev/smd0 \
     ro.ril.hsxpa=2 \
     ro.ril.gprsclass=10 \
-    wifi.interface=wlan0
+    wifi.interface=tiwlan0
 
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,

@@ -51,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-1.so \
     rild.libargs=-d /dev/smd0 \
-    wifi.interface=wlan0
+    wifi.interface=tiwlan0
     
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
@@ -102,6 +102,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.execution-mode=int:jit \
     dalvik.vm.heapsize=32m \
     ro.compcache.default=0
+
+# Enable ti hotspot
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.hotspot.ti=1
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \

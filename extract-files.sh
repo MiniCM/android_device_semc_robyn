@@ -2,210 +2,133 @@
 
 VENDOR=semc
 DEVICE=robyn
+rm -rf ../../../vendor/$VENDOR/$DEVICE/
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary
 if [ $# -ne 1 ]
 then
     echo "Pulling from device..."
-    adb pull /system/bin/akmd2 ../../../vendor/$VENDOR/$DEVICE/proprietary/akmd2
-    chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/akmd2
-    adb pull /system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
-    chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
-    adb pull /system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary/01_qcomm_omx.cfg
-    adb pull /system/etc/tiwlan.ini ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan.ini
-    adb pull /system/etc/tiwlan_firmware.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_firmware.bin
-    adb pull /system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/TIInit_7.2.31.bts
-    adb pull /system/etc/firmware/fm_rx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.1.bts
-    adb pull /system/etc/firmware/fm_rx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.2.bts
-    adb pull /system/etc/firmware/fm_tx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_tx_init_1273.1.bts
-    adb pull /system/etc/firmware/fm_tx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_tx_init_1273.2.bts
-    adb pull /system/etc/firmware/fmc_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fmc_init_1273.1.bts
-    adb pull /system/etc/firmware/fmc_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fmc_init_1273.2.bts
-    adb pull /system/etc/firmware/yamato_pfp.fw ../../../vendor/$VENDOR/$DEVICE/proprietary/yamato_pfp.fw
-    adb pull /system/etc/firmware/yamato_pm4.fw ../../../vendor/$VENDOR/$DEVICE/proprietary/yamato_pm4.fw
-    adb pull /system/etc/permissions/com.dsi.ant.antradio_library.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.dsi.ant.antradio_library.xml
-    adb pull /system/etc/permissions/com.sonyericsson.smfmf.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.smfmf.xml
-    adb pull /system/etc/permissions/com.sonyericsson.suquashi.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.suquashi.xml
-    adb pull /system/etc/permissions/com.ti.fm.fmreceiverif.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.ti.fm.fmreceiverif.xml
-    adb pull /system/etc/semc/chargemon/anim1.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim1.rle
-    adb pull /system/etc/semc/chargemon/anim2.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim2.rle
-    adb pull /system/etc/semc/chargemon/anim3.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim3.rle
-    adb pull /system/etc/semc/chargemon/anim4.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim4.rle
-    adb pull /system/etc/semc/chargemon/anim5.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim5.rle
-    adb pull /system/etc/semc/chargemon/anim6.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim6.rle
-    adb pull /system/etc/semc/chargemon/anim7.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim7.rle
-    adb pull /system/etc/semc/chargemon/anim8.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim8.rle
-    adb pull /system/etc/sensors.conf ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.conf
-    adb pull /system/lib/egl/libEGL_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libEGL_adreno200.so
-    adb pull /system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv1_CM_adreno200.so
-    adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv2_adreno200.so
-    adb pull /system/lib/egl/libq3dtools_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libq3dtools_adreno200.so
-    adb pull /system/lib/libcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcamera.so
-    adb pull /system/lib/libgps.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgps.so
-    adb pull /system/lib/libgsl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsl.so
-    #adb pull /system/lib/libril-qc-1.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libril-qc-1.so
-    adb pull /system/lib/liboemcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboemcamera.so
-    adb pull /system/lib/libfm_stack.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfm_stack.so
-    adb pull /system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
-    adb pull /system/lib/liboem_rapi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboem_rapi.so
-    adb pull /system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    #adb pull /system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
-    adb pull /system/lib/libaudioeq.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudioeq.so
-    #adb pull /system/etc/AudioFilter.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilter.csv
-    adb pull /system/lib/libmm-adspsvc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmm-adspsvc.so
-    adb pull /system/lib/liboemcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboemcamera.so
-    adb pull /system/lib/libOmxCore.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxCore.so
-    adb pull /system/lib/libOmxH264Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxH264Dec.so
-    adb pull /system/lib/libOmxMpeg4Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxMpeg4Dec.so
-    adb pull /system/lib/libOmxVidEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxVidEnc.so
-    adb pull /system/lib/libOmxWmaDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxWmaDec.so
-    adb pull /system/lib/modules/tiwlan_drv.ko ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_drv.ko
-    adb pull /system/lib/modules/sdio.ko ../../../vendor/$VENDOR/$DEVICE/proprietary/sdio.ko
-    adb pull /system/bin/rild ../../../vendor/$VENDOR/$DEVICE/proprietary/rild
-    adb pull /system/bin/semc_chargalg ../../../vendor/$VENDOR/$DEVICE/proprietary/semc_chargalg
-    adb pull /system/etc/AudioFilterPlatform.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterPlatform.csv
-    adb pull /system/etc/AudioFilterProduct.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterProduct.csv
-    adb pull /system/lib/libhardware_legacy.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libhardware_legacy.so
-    adb pull /system/lib/hw/lights.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lights.default.so
-    adb pull /system/lib/hw/gralloc.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.msm7k.so
-    adb pull /system/lib/hw/gralloc.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.default.so
-    adb pull /system/lib/hw/copybit.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/copybit.msm7k.so
-    adb pull /system/lib/hw/sensors.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.default.so
-    adb pull /system/lib/hw/hal_seport.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/hal_seport.default.so
-    adb pull /system/lib/libvdmengine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libvdmengine.so
-    adb pull /system/lib/libloc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libloc.so
-    adb pull /system/lib/libmmgsdilib.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmgsdilib.so
-    adb pull /system/lib/libqmi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libqmi.so
-    #adb pull /system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libril.so
-    adb pull /system/lib/libloc-rpc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libloc-rpc.so
-    adb pull /system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libuinputdevicejni.so
-    adb pull /system/lib/libwms.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwms.so
-    adb pull /system/lib/libfuse.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfuse.so
-    adb pull /system/lib/libpbmlib.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libpbmlib.so
-    adb pull /system/lib/libqueue.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libqueue.so
-    adb pull /system/lib/liboncrpc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboncrpc.so
-    adb pull /system/lib/libmiscta.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmiscta.so
-    adb pull /system/lib/libfacedetect.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetect.so
-    adb pull /system/lib/libsystemconnector_hal_jni.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libsystemconnector_hal_jni.so
-    adb pull /system/lib/libgsdi_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsdi_exp.so
-    adb pull /system/lib/libauth.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libauth.so
-    adb pull /system/lib/libmmjpeg.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmjpeg.so
-    adb pull /system/lib/libaudio.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudio.so
-    adb pull /system/lib/libreference-ril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libreference-ril.so
-    adb pull /system/lib/libmmipl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmipl.so
-    adb pull /system/lib/libdiag.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdiag.so
-    adb pull /system/lib/libcm.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcm.so
-    adb pull /system/lib/libnv.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libnv.so
-    adb pull /system/lib/libvdmfumo.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libvdmfumo.so
-    adb pull /system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    adb pull /system/lib/libgstk_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgstk_exp.so
-    adb pull /system/lib/libfacedetectjnitest.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetectjnitest.so
-    adb pull /system/lib/libcommondefs.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcommondefs.so
-    adb pull /system/lib/libwmsts.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwmsts.so
-    adb pull /system/lib/libdll.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdll.so
-    adb pull /system/lib/libdsm.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdsm.so
-    adb pull /system/lib/libdss.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdss.so
+    ACTION="${ACTION}"
 else
     LOCAL_PROPR_DIR=$1
     echo "Copying from $LOCAL_PROPR_DIR ..."
-    cp -pr $LOCAL_PROPR_DIR/system/bin/akmd2 ../../../vendor/$VENDOR/$DEVICE/proprietary/akmd2
-    chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/akmd2
-    cp -pr $LOCAL_PROPR_DIR/system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
-    chmod 755 ../../../vendor/$VENDOR/$DEVICE/proprietary/mm-venc-omx-test
-    cp -pr $LOCAL_PROPR_DIR/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary/01_qcomm_omx.cfg
-    cp -pr $LOCAL_PROPR_DIR/system/etc/tiwlan.ini ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan.ini
-    cp -pr $LOCAL_PROPR_DIR/system/etc/tiwlan_firmware.bin ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_firmware.bin
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/TIInit_7.2.31.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fm_rx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.1.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fm_rx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_rx_init_1273.2.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fm_tx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_tx_init_1273.1.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fm_tx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fm_tx_init_1273.2.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fmc_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fmc_init_1273.1.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/fmc_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary/fmc_init_1273.2.bts
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/yamato_pfp.fw ../../../vendor/$VENDOR/$DEVICE/proprietary/yamato_pfp.fw
-    cp -pr $LOCAL_PROPR_DIR/system/etc/firmware/yamato_pm4.fw ../../../vendor/$VENDOR/$DEVICE/proprietary/yamato_pm4.fw
-    cp -pr $LOCAL_PROPR_DIR/system/etc/permissions/com.dsi.ant.antradio_library.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.dsi.ant.antradio_library.xml
-    cp -pr $LOCAL_PROPR_DIR/system/etc/permissions/com.sonyericsson.smfmf.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.smfmf.xml
-    cp -pr $LOCAL_PROPR_DIR/system/etc/permissions/com.sonyericsson.suquashi.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.suquashi.xml
-    cp -pr $LOCAL_PROPR_DIR/system/etc/permissions/com.ti.fm.fmreceiverif.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.ti.fm.fmreceiverif.xml
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim1.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim1.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim2.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim2.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim3.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim3.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim4.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim4.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim5.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim5.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim6.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim6.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim7.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim7.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/semc/chargemon/anim8.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim8.rle
-    cp -pr $LOCAL_PROPR_DIR/system/etc/sensors.conf ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.conf
-    cp -pr $LOCAL_PROPR_DIR/system/lib/egl/libEGL_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libEGL_adreno200.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv1_CM_adreno200.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/egl/libGLESv2_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv2_adreno200.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/egl/libq3dtools_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libq3dtools_adreno200.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcamera.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libgps.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgps.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libgsl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsl.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libril-qc-1.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libril-qc-1.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/liboemcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboemcamera.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libfm_stack.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfm_stack.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/liboem_rapi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboem_rapi.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libbluedroid.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libbluedroid.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libaudioeq.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudioeq.so
-    #cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilter.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilter.csv
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libmm-adspsvc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmm-adspsvc.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/liboemcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboemcamera.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libOmxCore.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxCore.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libOmxH264Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxH264Dec.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libOmxMpeg4Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxMpeg4Dec.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libOmxVidEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxVidEnc.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libOmxWmaDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libOmxWmaDec.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/modules/tiwlan_drv.ko ../../../vendor/$VENDOR/$DEVICE/proprietary/tiwlan_drv.ko
-    cp -pr $LOCAL_PROPR_DIR/system/lib/modules/sdio.ko ../../../vendor/$VENDOR/$DEVICE/proprietary/sdio.ko
-    cp -pr $LOCAL_PROPR_DIR/system/bin/rild ../../../vendor/$VENDOR/$DEVICE/proprietary/rild
-    cp -pr $LOCAL_PROPR_DIR/system/bin/semc_chargalg ../../../vendor/$VENDOR/$DEVICE/proprietary/semc_chargalg
-    cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilterPlatform.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterPlatform.csv
-    cp -pr $LOCAL_PROPR_DIR/system/etc/AudioFilterProduct.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterProduct.csv
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libhardware_legacy.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libhardware_legacy.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/lights.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lights.default.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/gralloc.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.msm7k.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/gralloc.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.default.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/copybit.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/copybit.msm7k.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/sensors.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.default.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/hw/hal_seport.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/hal_seport.default.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libvdmengine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libvdmengine.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libloc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libloc.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libmmgsdilib.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmgsdilib.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libqmi.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libqmi.so
-    #cp -pr $LOCAL_PROPR_DIR/system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libril.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libloc-rpc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libloc-rpc.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libuinputdevicejni.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libwms.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwms.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libfuse.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfuse.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libpbmlib.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libpbmlib.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libqueue.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libqueue.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/liboncrpc.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboncrpc.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libmiscta.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmiscta.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libfacedetect.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetect.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libsystemconnector_hal_jni.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libsystemconnector_hal_jni.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libgsdi_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsdi_exp.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libauth.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libauth.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libmmjpeg.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmjpeg.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libaudio.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudio.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libreference-ril.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libreference-ril.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libmmipl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmipl.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libdiag.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdiag.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libcm.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcm.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libnv.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libnv.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libvdmfumo.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libvdmfumo.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libgstk_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgstk_exp.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libfacedetectjnitest.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetectjnitest.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libcommondefs.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcommondefs.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libwmsts.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libwmsts.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libdll.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdll.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libdsm.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdsm.so
-    cp -pr $LOCAL_PROPR_DIR/system/lib/libdss.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libdss.so
+    ACTION="cp -pr $LOCAL_PROPR_DIR/"
 fi
+    ${ACTION}/system/bin/akmd2 ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/hciattach ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
+
+## RIL related stuff 
+    ${ACTION}/system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/port-bridge ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/qmuxd ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libauth.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libcm.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libdiag.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libdll.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libdsm.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libdss.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libgsdi_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libgstk_exp.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libmmgsdilib.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libnv.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/liboem_rapi.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/liboncrpc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libpbmlib.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libqmi.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libqueue.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libuim.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libril-qc-1.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libwms.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libwmsts.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    
+## Firmware
+    ${ACTION}/system/etc/firmware/yamato_pfp.fw ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/yamato_pm4.fw ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fm_rx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fm_rx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fm_tx_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fm_tx_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fmc_init_1273.1.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/fmc_init_1273.2.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
+
+## Offline charging
+    ${ACTION}/system/bin/chargemon ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/semc_chargalg ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/updatemiscta ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libmiscta.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/semc/chargemon/anim1.rle ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/semc/chargemon/anim2.rle ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/etc/semc/chargemon/anim3.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim3.rle
+    ${ACTION}/system/etc/semc/chargemon/anim4.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim4.rle
+    ${ACTION}/system/etc/semc/chargemon/anim5.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim5.rle
+    ${ACTION}/system/etc/semc/chargemon/anim6.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim6.rle
+    ${ACTION}/system/etc/semc/chargemon/anim7.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim7.rle
+    ${ACTION}/system/etc/semc/chargemon/anim8.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim8.rle
+
+## FM Radio and ANT
+    ${ACTION}/system/etc/permissions/com.dsi.ant.antradio_library.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.dsi.ant.antradio_library.xml
+    ${ACTION}/system/etc/permissions/com.sonyericsson.smfmf.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.smfmf.xml
+    ${ACTION}/system/etc/permissions/com.sonyericsson.suquashi.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.suquashi.xml
+    ${ACTION}/system/etc/permissions/com.ti.fm.fmreceiverif.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.ti.fm.fmreceiverif.xml
+    ${ACTION}/system/lib/libfm_stack.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfm_stack.so
+    ${ACTION}/system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
+    
+## HW and sensors
+    ${ACTION}/system/etc/sensors.conf ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.conf
+    ${ACTION}/system/lib/hw/lights.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/lights.default.so
+    ${ACTION}/system/lib/hw/gralloc.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.msm7k.so
+    ${ACTION}/system/lib/hw/gralloc.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.default.so
+    ${ACTION}/system/lib/hw/copybit.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/copybit.msm7k.so
+    ${ACTION}/system/lib/hw/sensors.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.default.so
+    ${ACTION}/system/lib/hw/hal_seport.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/hal_seport.default.so
+    ${ACTION}/system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libsystemconnector_hal_jni.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    
+## Adreno 200 files
+    ${ACTION}/system/lib/libgsl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libgsl.so
+    ${ACTION}/system/lib/egl/libEGL_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libEGL_adreno200.so
+    ${ACTION}/system/lib/egl/libGLESv1_CM_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv1_CM_adreno200.so
+    ${ACTION}/system/lib/egl/libGLESv2_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libGLESv2_adreno200.so
+    ${ACTION}/system/lib/egl/libq3dtools_adreno200.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libq3dtools_adreno200.so
+
+## Camera
+    ${ACTION}/system/lib/libcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcamera.so
+    ${ACTION}/system/lib/liboemcamera.so ../../../vendor/$VENDOR/$DEVICE/proprietary/liboemcamera.so
+    ${ACTION}/system/lib/libmmipl.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmipl.so
+    ${ACTION}/system/lib/libmmjpeg.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libmmjpeg.so
+    ${ACTION}/system/lib/libfacedetect.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetect.so
+    ${ACTION}/system/lib/libvdmfumo.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libvdmfumo.so
+    ${ACTION}/system/lib/libfacedetectjnitest.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfacedetectjnitest.so
+    ${ACTION}/system/lib/libcommondefs.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libcommondefs.so
+    ${ACTION}/system/lib/libopencore_common.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    
+## Audio
+    ${ACTION}/system/etc/AudioFilterPlatform.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterPlatform.csv
+    ${ACTION}/system/etc/AudioFilterProduct.csv ../../../vendor/$VENDOR/$DEVICE/proprietary/AudioFilterProduct.csv
+    ${ACTION}/system/lib/libaudioeq.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudioeq.so
+    ${ACTION}/system/lib/libaudio.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libaudio.so
+
+## OMX proprietaries
+    ${ACTION}/system/lib/libmm-adspsvc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAacDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAmrRtpDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxH264Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxQcelpDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAacEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAmrwbDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxMp3Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxVidEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAmrDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxEvrcDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxMpeg4Dec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxWmaDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxAmrEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxEvrcEnc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxQcelp13Enc.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libOmxWmvDec.so ../../../vendor/$VENDOR/$DEVICE/proprietary
 
 (cat << EOF) | sed -e s/__DEVICE__/$DEVICE/g -e s/__VENDOR__/$VENDOR/g > ../../../vendor/$VENDOR/$DEVICE/device_$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -224,28 +147,55 @@ fi
 
 # This file is generated by device/$VENDOR/__DEVICE__/extract-files.sh
 
-PRODUCT_COPY_FILES := \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libgps.so:obj/lib/libgps.so
-
 PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/akmd2:system/bin/akmd2 \\
     vendor/__VENDOR__/__DEVICE__/proprietary/mm-venc-omx-test:system/bin/mm-venc-omx-test \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan_firmware.bin:system/etc/tiwlan_firmware.bin \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan.ini:system/etc/tiwlan.ini \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/TIInit_7.2.31.bts:system/etc/firmware/TIInit_7.2.31.bts \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/hciattach:system/bin/hciattach \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg
+    
+## RIL related stuff 
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libril.so:system/lib/libril.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/port-bridge:system/bin/port-bridge \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libauth.so:system/lib/libauth.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libcm.so:system/lib/libcm.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libdiag.so:system/lib/libdiag.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libdll.so:system/lib/libdll.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libdsm.so:system/lib/libdsm.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libdss.so:system/lib/libdss.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libgsdi_exp.so:system/lib/libgsdi_exp.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libgstk_exp.so:system/lib/libgstk_exp.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libmmgsdilib.so:system/lib/libmmgsdilib.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libnv.so:system/lib/libnv.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/liboncrpc.so:system/lib/liboncrpc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libpbmlib.so:system/lib/libpbmlib.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libqmi.so:system/lib/libqmi.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libqueue.so:system/lib/libqueue.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libuim.so:system/lib/libuim.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libril-qc-1.so:system/lib/libril-qc-1.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libwms.so:system/lib/libwms.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libwmsts.so:system/lib/libwmsts.so
+    
+## Firmware
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_rx_init_1273.1.bts:system/etc/firmware/fm_rx_init_1273.1.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_rx_init_1273.2.bts:system/etc/firmware/fm_rx_init_1273.2.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_tx_init_1273.1.bts:system/etc/firmware/fm_tx_init_1273.1.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fm_tx_init_1273.2.bts:system/etc/firmware/fm_tx_init_1273.2.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fmc_init_1273.1.bts:system/etc/firmware/fmc_init_1273.1.bts \\
     vendor/__VENDOR__/__DEVICE__/proprietary/fmc_init_1273.2.bts:system/etc/firmware/fmc_init_1273.2.bts \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.smfmf.xml:system/etc/permissions/com.sonyericsson.smfmf.xml \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.suquashi.xml:system/etc/permissions/com.sonyericsson.suquashi.xml \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/com.ti.fm.fmreceiverif.xml:system/etc/permissions/com.ti.fm.fmreceiverif.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/TIInit_7.2.31.bts:system/etc/firmware/TIInit_7.2.31.bts 
+
+## Offline charging
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/chargemon:system/bin/charger \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libmiscta.so:system/lib/libmiscta.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/semc_chargalg:system/bin/semc_chargalg \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/updatemiscta:system/bin/updatemiscta \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim1.rle:system/etc/semc/chargemon/anim1.rle \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim2.rle:system/etc/semc/chargemon/anim2.rle \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim3.rle:system/etc/semc/chargemon/anim3.rle \\
@@ -253,44 +203,58 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim5.rle:system/etc/semc/chargemon/anim5.rle \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim6.rle:system/etc/semc/chargemon/anim6.rle \\
     vendor/__VENDOR__/__DEVICE__/proprietary/anim7.rle:system/etc/semc/chargemon/anim7.rle \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/anim8.rle:system/etc/semc/chargemon/anim8.rle \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/anim8.rle:system/etc/semc/chargemon/anim8.rle
+      
+## FM Radio and ANT
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.smfmf.xml:system/etc/permissions/com.sonyericsson.smfmf.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.suquashi.xml:system/etc/permissions/com.sonyericsson.suquashi.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.ti.fm.fmreceiverif.xml:system/etc/permissions/com.ti.fm.fmreceiverif.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libfm_stack.so:system/lib/libfm_stack.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libfmrx.so:system/lib/libfmrx.so
+  
+## HW and sensors
+PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/sensors.conf:system/etc/sensors.conf \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lights.default.so:system/lib/hw/lights.default.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.default.so:system/lib/hw/gralloc.default.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/copybit.msm7k.so:system/lib/hw/copybit.msm7k.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensors.default.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/hal_seport.default.so:system/lib/hw/hal_seport.default.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libuinputdevicejni.so:system/lib/libsystemconnector/libuinputdevicejni.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libsystemconnector_hal_jni.so:system/lib/libsystemconnector_hal_jni.so
+
+## Adreno 200 files
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libgps.so:system/lib/libgps.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libgsl.so:system/lib/libgsl.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so
+    
+## Camera    
+PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfm_stack.so:system/lib/libfm_stack.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfmrx.so:system/lib/libfmrx.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libZiEngine.so:system/lib/libZiEngine.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libfacedetect.so:system/lib/libfacedetect.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libvdmfumo.so:system/lib/libvdmfumo.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libfacedetectjnitest.so:system/lib/libfacedetectjnitest.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libcommondefs.so:system/lib/libcommondefs.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libopencore_common.so:system/lib/libopencore_common.so
+
+## Audio
+PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/AudioFilterPlatform.csv:system/etc/AudioFilterPlatform.csv \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/AudioFilterProduct.csv:system/etc/AudioFilterProduct.csv \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libaudioeq.so:system/lib/libaudioeq.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxCore.so:system/lib/libOmxCore.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/libaudio.so:system/lib/libaudio.so
 
-
-# Removed binaries and libraries
-#PRODUCT_COPY_FILES += \\
-#    device/__VENDOR__/__DEVICE__/prebuilt/netcfg:system/bin/netcfg \\
-#    vendor/__VENDOR__/__DEVICE__/proprietary/libbluedroid.so:system/lib/libbluedroid.so
-
-# Ril files
+## Kernel modules
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/rild:system/bin/rild \\
-    device/__VENDOR__/__DEVICE__/prebuilt/libril-qc-1.so:system/lib/libril-qc-1.so
-#    vendor/__VENDOR__/__DEVICE__/proprietary/libril-qc-1.so:system/lib/libril-qc-1.so \\
-#    vendor/__VENDOR__/__DEVICE__/proprietary/libril.so:system/lib/libril.so \\
-
-# Kernel modules
-PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/sdio.ko:system/lib/modules/sdio.ko \\
     device/__VENDOR__/__DEVICE__/modules/jbd.ko:system/lib/modules/jbd.ko \\
     device/__VENDOR__/__DEVICE__/modules/ext3.ko:system/lib/modules/ext3.ko \\
     device/__VENDOR__/__DEVICE__/modules/jbd2.ko:system/lib/modules/jbd2.ko \\
@@ -304,60 +268,45 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/modules/x10minioc.ko:system/lib/modules/x10minioc.ko \\
     device/__VENDOR__/__DEVICE__/modules/x10miniuv.ko:system/lib/modules/x10miniuv.ko \\
     device/__VENDOR__/__DEVICE__/modules/ax8_smartass.ko:system/lib/modules/ax8_smartass.ko \\
-    device/__VENDOR__/__DEVICE__/modules/x8mddi.ko:system/lib/modules/x8mddi.ko
+    device/__VENDOR__/__DEVICE__/modules/mddi.ko:system/lib/modules/mddi.ko \\
+    device/__VENDOR__/__DEVICE__/prebuilt/04modules:system/etc/init.d/04modules
 
+## Hotspot
+PRODUCT_COPY_FILES += \
+    device/__VENDOR__/__DEVICE__/modules/sdio.ko:system/lib/modules/sdio.ko \\
+    device/__VENDOR__/__DEVICE__/modules/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \\
+    device/__VENDOR__/__DEVICE__/modules/tiap_drv.ko:system/lib/modules/tiap_drv.ko \\
+    device/__VENDOR__/__DEVICE__/prebuilt/tiap_loader.sh:system/bin/tiap_loader.sh \\
+    device/__VENDOR__/__DEVICE__/prebuilt/10dnsconf:system/etc/init.d/10dnsconf \\
+    device/__VENDOR__/__DEVICE__/prebuilt/10hostapconf:system/etc/init.d/10hostapconf \\
+    device/__VENDOR__/__DEVICE__/prebuilt/hostapd.conf:system/etc/wifi/softap/hostapd.conf \\
+    device/__VENDOR__/__DEVICE__/prebuilt/dnsmasq.conf:system/etc/wifi/dnsmasq.conf \\
+    device/__VENDOR__/__DEVICE__/prebuilt/tiwlan.ini:system/etc/wifi/tiwlan.ini \\
+    device/__VENDOR__/__DEVICE__/prebuilt/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini \\
+    device/__VENDOR__/__DEVICE__/prebuilt/tiwlan_firmware.bin:system/etc/wifi/tiwlan_firmware.bin \\
+    device/__VENDOR__/__DEVICE__/prebuilt/tiwlan_firmware_ap.bin:system/etc/wifi/softap/tiwlan_firmware_ap.bin 
+
+## OMX proprietaries
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/semc_chargalg:system/bin/semc_chargalg \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/AudioFilterPlatform.csv:system/etc/AudioFilterPlatform.csv \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/AudioFilterProduct.csv:system/etc/AudioFilterProduct.csv \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libhardware_legacy.so:system/lib/libhardware_legacy.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAacDec.so:system/lib/libOmxAacDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libOmxWmvDec.so:system/lib/libOmxWmvDec.so
 
-# Wpa-supplicant
-PRODUCT_COPY_FILES += \\
-    device/__VENDOR__/__DEVICE__/prebuilt/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
-
-# Extra libs to pull from device
-PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/lights.default.so:system/lib/hw/lights.default.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.default.so:system/lib/hw/gralloc.default.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/copybit.msm7k.so:system/lib/hw/copybit.msm7k.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensors.default.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/hal_seport.default.so:system/lib/hw/hal_seport.default.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libvdmengine.so:system/lib/libvdmengine.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libloc.so:system/lib/libloc.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libmmgsdilib.so:system/lib/libmmgsdilib.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libqmi.so:system/lib/libqmi.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libloc-rpc.so:system/lib/libloc-rpc.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libuinputdevicejni.so:system/lib/libsystemconnector/libuinputdevicejni.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libwms.so:system/lib/libwms.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfuse.so:system/lib/libfuse.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libpbmlib.so:system/lib/libpbmlib.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libqueue.so:system/lib/libqueue.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/liboncrpc.so:system/lib/liboncrpc.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libmiscta.so:system/lib/libmiscta.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfacedetect.so:system/lib/libfacedetect.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libsystemconnector_hal_jni.so:system/lib/libsystemconnector_hal_jni.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libgsdi_exp.so:system/lib/libgsdi_exp.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libauth.so:system/lib/libauth.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libaudio.so:system/lib/libaudio.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libreference-ril.so:system/lib/libreference-ril.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libmmipl.so:system/lib/libmmipl.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libdiag.so:system/lib/libdiag.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libcm.so:system/lib/libcm.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libnv.so:system/lib/libnv.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libvdmfumo.so:system/lib/libvdmfumo.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libZiEngine.so:system/lib/libZiEngine.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libgstk_exp.so:system/lib/libgstk_exp.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfacedetectjnitest.so:system/lib/libfacedetectjnitest.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libcommondefs.so:system/lib/libcommondefs.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libwmsts.so:system/lib/libwmsts.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libdll.so:system/lib/libdll.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libdsm.so:system/lib/libdsm.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libdss.so:system/lib/libdss.so
-
-# Extra prebuilt binaries
+## Extra prebuilt binaries
 PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/hw_config.sh:system/etc/hw_config.sh \\
     device/__VENDOR__/__DEVICE__/prebuilt/FmRxService.apk:system/app/FmRxService.apk \\
@@ -365,25 +314,19 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/SuquashiInputMethod.apk:system/app/SuquashiInputMethod.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/SystemConnector.apk:system/app/SystemConnector.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/chargemon:system/bin/chargemon \\
-    device/__VENDOR__/__DEVICE__/prebuilt/charger:system/bin/charger \\
-    device/__VENDOR__/__DEVICE__/prebuilt/hciattach:system/bin/hciattach \\
     device/__VENDOR__/__DEVICE__/prebuilt/property.tar:system/bin/property.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/qmuxd:system/bin/qmuxd \\
     device/__VENDOR__/__DEVICE__/prebuilt/ramdisk.tar:system/bin/ramdisk.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/tiwlan_loader:system/bin/tiwlan_loader \\
     device/__VENDOR__/__DEVICE__/prebuilt/xrecovery.tar:system/bin/xrecovery.tar \\
     device/__VENDOR__/__DEVICE__/prebuilt/recovery.tar:system/bin/recovery.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/hw_config.sh:system/etc/hw_config.sh \\
     device/__VENDOR__/__DEVICE__/prebuilt/com.dsi.ant.antradio_library.jar:system/framework/com.dsi.ant.antradio_library.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/com.sonyericsson.suquashi.jar:system/framework/com.sonyericsson.suquashi.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/dhcpcd.conf:system/etc/dhcpcd.conf \\
-    device/__VENDOR__/__DEVICE__/prebuilt/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \\
     device/__VENDOR__/__DEVICE__/prebuilt/vold.fstab:system/etc/vold.fstab
 
-# Keyboard layouts and T9
+## Keyboard layouts and T9
 PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libZiEngine.so:system/lib/libZiEngine.so \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Basque/Zi8DatEUs.z8d:system/usr/zi/Basque/Zi8DatEUs.z8d \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Danish/Zi8DatDAs.z8d:system/usr/zi/Danish/Zi8DatDAs.z8d \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Estonian/Zi8DatETs.z8d:system/usr/zi/Estonian/Zi8DatETs.z8d \\
@@ -474,11 +417,11 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/bul.xml:system/usr/keyboard-config/languages/bul.xml \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/dan.xml:system/usr/keyboard-config/languages/dan.xml
 
-# sh compatible with chargemon
+## sh compatible with chargemon
 PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/sh:system/xbin/sh
 
-# Extra Cyanogen vendor files
+## Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \\
     vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
