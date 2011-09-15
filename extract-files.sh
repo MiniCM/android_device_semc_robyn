@@ -17,9 +17,10 @@ fi
     ${ACTION}/system/bin/mm-venc-omx-test ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/hciattach ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/bin/nvimport ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
 
-## RIL related stuff 
+## RIL related stuff
     ${ACTION}/system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/port-bridge ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/qmuxd ../../../vendor/$VENDOR/$DEVICE/proprietary
@@ -151,6 +152,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/akmd2:system/bin/akmd2 \\
     vendor/__VENDOR__/__DEVICE__/proprietary/mm-venc-omx-test:system/bin/mm-venc-omx-test \\
     vendor/__VENDOR__/__DEVICE__/proprietary/hciattach:system/bin/hciattach \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/nvimport:system/bin/nvimport \\
     vendor/__VENDOR__/__DEVICE__/proprietary/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg
     
 ## RIL related stuff 
@@ -253,29 +255,8 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libaudioeq.so:system/lib/libaudioeq.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libaudio.so:system/lib/libaudio.so
 
-## Kernel modules
-PRODUCT_COPY_FILES += \\
-    device/__VENDOR__/__DEVICE__/modules/jbd.ko:system/lib/modules/jbd.ko \\
-    device/__VENDOR__/__DEVICE__/modules/ext3.ko:system/lib/modules/ext3.ko \\
-    device/__VENDOR__/__DEVICE__/modules/jbd2.ko:system/lib/modules/jbd2.ko \\
-    device/__VENDOR__/__DEVICE__/modules/ext4.ko:system/lib/modules/ext4.ko \\
-    device/__VENDOR__/__DEVICE__/modules/dm-crypt.ko:system/lib/modules/dm-crypt.ko \\
-    device/__VENDOR__/__DEVICE__/modules/dm-mod.ko:system/lib/modules/dm-mod.ko \\
-    device/__VENDOR__/__DEVICE__/modules/tun.ko:system/lib/modules/tun.ko \\
-    device/__VENDOR__/__DEVICE__/modules/twofish.ko:system/lib/modules/twofish.ko \\
-    device/__VENDOR__/__DEVICE__/modules/twofish_common.ko:system/lib/modules/twofish_common.ko \\
-    device/__VENDOR__/__DEVICE__/modules/x8gesture.ko:system/lib/modules/x8gesture.ko \\
-    device/__VENDOR__/__DEVICE__/modules/x10minioc.ko:system/lib/modules/x10minioc.ko \\
-    device/__VENDOR__/__DEVICE__/modules/x10miniuv.ko:system/lib/modules/x10miniuv.ko \\
-    device/__VENDOR__/__DEVICE__/modules/ax8_smartass.ko:system/lib/modules/ax8_smartass.ko \\
-    device/__VENDOR__/__DEVICE__/modules/mddi.ko:system/lib/modules/mddi.ko \\
-    device/__VENDOR__/__DEVICE__/prebuilt/04modules:system/etc/init.d/04modules
-
 ## Hotspot
 PRODUCT_COPY_FILES += \
-    device/__VENDOR__/__DEVICE__/modules/sdio.ko:system/lib/modules/sdio.ko \\
-    device/__VENDOR__/__DEVICE__/modules/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \\
-    device/__VENDOR__/__DEVICE__/modules/tiap_drv.ko:system/lib/modules/tiap_drv.ko \\
     device/__VENDOR__/__DEVICE__/prebuilt/tiap_loader.sh:system/bin/tiap_loader.sh \\
     device/__VENDOR__/__DEVICE__/prebuilt/10dnsconf:system/etc/init.d/10dnsconf \\
     device/__VENDOR__/__DEVICE__/prebuilt/10hostapconf:system/etc/init.d/10hostapconf \\
@@ -313,16 +294,12 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/Radio.apk:system/app/Radio.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/SuquashiInputMethod.apk:system/app/SuquashiInputMethod.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/SystemConnector.apk:system/app/SystemConnector.apk \\
-    device/__VENDOR__/__DEVICE__/prebuilt/chargemon:system/bin/chargemon \\
-    device/__VENDOR__/__DEVICE__/prebuilt/property.tar:system/bin/property.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/ramdisk.tar:system/bin/ramdisk.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/xrecovery.tar:system/bin/xrecovery.tar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/recovery.tar:system/bin/recovery.tar \\
     device/__VENDOR__/__DEVICE__/prebuilt/com.dsi.ant.antradio_library.jar:system/framework/com.dsi.ant.antradio_library.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/com.sonyericsson.suquashi.jar:system/framework/com.sonyericsson.suquashi.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar \\
-    device/__VENDOR__/__DEVICE__/prebuilt/vold.fstab:system/etc/vold.fstab
+    device/__VENDOR__/__DEVICE__/prebuilt/vold.fstab:system/etc/vold.fstab \\
+    device/__VENDOR__/__DEVICE__/placeholder:system/lib/modules/.placeholder \\
 
 ## Keyboard layouts and T9
 PRODUCT_COPY_FILES += \\
@@ -416,10 +393,6 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/isl.xml:system/usr/keyboard-config/languages/isl.xml \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/bul.xml:system/usr/keyboard-config/languages/bul.xml \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/dan.xml:system/usr/keyboard-config/languages/dan.xml
-
-## sh compatible with chargemon
-PRODUCT_COPY_FILES += \\
-    device/__VENDOR__/__DEVICE__/prebuilt/sh:system/xbin/sh
 
 ## Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \\

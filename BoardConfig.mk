@@ -3,7 +3,6 @@ USE_CAMERA_STUB := true
 # Fake building with eclair cam
 BOARD_USES_ECLAIR_LIBCAMERA := true
 BOARD_USES_ECLAIR_LIBAUDIO := true
-TARGET_PROVIDES_LIBRIL := true
 
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
@@ -72,7 +71,6 @@ JS_ENGINE := v8
 BUILD_WITH_FULL_STAGEFRIGHT := true
 
 #TARGET_PROVIDES_LIBAUDIO := true
-TARGET_PROVIDES_LIBRIL := true
 
 # to enable the GPS HAL
 BOARD_USES_QCOM_GPS := true
@@ -87,7 +85,7 @@ TARGET_NO_RADIOIMAGE := true
 
 BUILD_WITHOUT_PV := true
 
-WITH_DEXPREOPT := false
+WITH_DEXPREOPT := true
 
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;mkdir -p /data/local/tmp;touch /data/local/tmp/xrecovery;sync;"
 BOARD_HAS_BOOT_RECOVERY := true
