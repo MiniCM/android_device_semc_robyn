@@ -42,10 +42,8 @@ PRODUCT_COPY_FILES += \
     
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    keyguard.no_require_sim=true \
     ro.ril.hsxpa=2 \
     ro.ril.hsupa.category=5 \
-    ro.ril.def.agps.mode=2 \
     ro.media.dec.jpeg.memcap=10000000
     
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -59,7 +57,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=45
 
-# Configure agps cell location.  Must have Eclair libse_ril.so.
+# Configure agps cell location.
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=2 \
@@ -72,7 +70,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.networklocation=1 \
     ro.ril.enable.a52=1 \
     ro.ril.enable.a53=1 \
-    ro.com.google.clientidbase=android-google \
     ro.media.enc.file.format       = 3gp,mp4 \
     ro.media.enc.vid.codec         = m4v,h263 \
     ro.media.enc.vid.h263.width    = 176,640 \
@@ -107,12 +104,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.hotspot.ti=1
 
+# Use the semc-msm7x27 RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=semc-msm7x27
+
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/semc/robyn/media_profiles.xml:/system/etc/media_profiles.xml
-
-# stuff common to all HTC phones
-$(call inherit-product, device/htc/common/common.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 

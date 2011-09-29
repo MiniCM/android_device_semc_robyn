@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2010 The Android Open Source Project
+<!-- Copyright (C) 2010 The AOSP edited by Paul
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -71,24 +71,20 @@
 <!ATTLIST AudioDecoderCap name (wma) #REQUIRED>
 <!ATTLIST AudioDecoderCap enabled (true|false) #REQUIRED>
 ]>
-<!--
-     This file is used to declare the multimedia profiles and capabilities
-     on an android-powered device.
--->
+
 <MediaSettings>
-    <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles>
 
-        <EncoderProfile quality="high" fileFormat="3gp" duration="60">
+        <EncoderProfile quality="high" fileFormat="mp4" duration="60">
             <Video codec="m4v"
-                   bitRate="1600000"
+                   bitRate="40000000"
                    width="640"
                    height="480"
                    frameRate="30" />
 
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
+            <Audio codec="aac"
+                   bitRate="320000"
+                   sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
 
@@ -106,7 +102,7 @@
 
         </EncoderProfile>
 
-        <ImageEncoding quality="90" />
+        <ImageEncoding quality="99" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
@@ -119,11 +115,6 @@
     <EncoderOutputFileFormat name="3gp" />
     <EncoderOutputFileFormat name="mp4" />
 
-    <!--
-         If a codec is not enabled, it is invisible to the applications
-         In other words, the applications won't be able to use the codec
-         or query the capabilities of the codec at all if it is disabled
-    -->
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="1600000"
         minFrameWidth="176" maxFrameWidth="640"
@@ -131,23 +122,16 @@
         minFrameRate="1" maxFrameRate="30" />
 
     <VideoEncoderCap name="m4v" enabled="true"
-        minBitRate="64000" maxBitRate="1600000"
+        minBitRate="64000" maxBitRate="40000000"
         minFrameWidth="176" maxFrameWidth="640"
         minFrameHeight="144" maxFrameHeight="480"
         minFrameRate="1" maxFrameRate="30" />
-
-    <AudioEncoderCap name="amrnb" enabled="true"
-        minBitRate="5525" maxBitRate="12200"
-        minSampleRate="8000" maxSampleRate="8000"
+		
+	<AudioEncoderCap name="aac" enabled="true"
+        minBitRate="5525" maxBitRate="320000"
+        minSampleRate="8000" maxSampleRate="48000"
         minChannels="1" maxChannels="1" />
 
-    <!--
-        FIXME:
-        We do not check decoder capabilities at present
-        At present, we only check whether windows media is visible
-        for TEST applications. For other applications, we do
-        not perform any checks at all.
-    -->
     <VideoDecoderCap name="wmv" enabled="true"/>
     <AudioDecoderCap name="wma" enabled="true"/>
 </MediaSettings>

@@ -70,7 +70,7 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 JS_ENGINE := v8
 BUILD_WITH_FULL_STAGEFRIGHT := true
 
-#TARGET_PROVIDES_LIBAUDIO := true
+TARGET_PROVIDES_LIBAUDIO := true
 
 # to enable the GPS HAL
 BOARD_USES_QCOM_GPS := true
@@ -87,7 +87,7 @@ BUILD_WITHOUT_PV := true
 
 WITH_DEXPREOPT := true
 
-TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;mkdir -p /data/local/tmp;touch /data/local/tmp/xrecovery;sync;"
+TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
 BOARD_HAS_BOOT_RECOVERY := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_NO_MISC_PARTITION := true

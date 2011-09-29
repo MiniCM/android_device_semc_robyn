@@ -11,7 +11,8 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libmm-omxcore \
     screencap \
-    hostap
+    hostap \
+    rzscontrol
 
 # Live wallpaper packages
 PRODUCT_PACKAGES += \
@@ -94,8 +95,4 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# stuff common to all HTC phones
-$(call inherit-product, device/htc/common/common.mk)
-
 $(call inherit-product, build/target/product/full.mk)
-
