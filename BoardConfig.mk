@@ -95,10 +95,13 @@ BOARD_USES_RECOVERY_CHARGEMODE := false
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_LDPI_RECOVERY := true
 BOARD_HAS_JANKY_BACKBUFFER := true
+BOARD_HAS_CRAPPY_BACKBUFFER := true
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/semc/msm7x27-common/recovery/recovery_ui.c
+
 BOARD_USE_SCREENCAP := true
 
 # A custom ota package maker for a device without a boot partition
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/robyn/releasetools/semc_ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/msm7x27-common/releasetools/semc_ota_from_target_files
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/semc/robyn/vibrator.c
