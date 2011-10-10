@@ -7,7 +7,7 @@ mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary
 if [ $# -ne 1 ]
 then
     echo "Pulling from device..."
-    ACTION="${ACTION}"
+    ACTION="adb pull "
 else
     LOCAL_PROPR_DIR=$1
     echo "Copying from $LOCAL_PROPR_DIR ..."
@@ -18,7 +18,9 @@ fi
     ${ACTION}/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/hciattach ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/nvimport ../../../vendor/$VENDOR/$DEVICE/proprietary
-    ${ACTION}/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libZiEngine.so
+    ${ACTION}/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/usr/keylayout/robyn_keypad.kl ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/usr/keychars/robyn_keypad.kcm.bin ../../../vendor/$VENDOR/$DEVICE/proprietary
 
 ## RIL related stuff
     ${ACTION}/system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary
@@ -303,6 +305,8 @@ PRODUCT_COPY_FILES += \\
 
 ## Keyboard layouts and T9
 PRODUCT_COPY_FILES += \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/robyn_keypad.kl:system/usr/keylayout/robyn_keypad.kl \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/robyn_keypad.kcm.bin:system/usr/keychars/robyn_keypad.kcm.bin \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libZiEngine.so:system/lib/libZiEngine.so \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Basque/Zi8DatEUs.z8d:system/usr/zi/Basque/Zi8DatEUs.z8d \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Danish/Zi8DatDAs.z8d:system/usr/zi/Danish/Zi8DatDAs.z8d \\
@@ -342,7 +346,6 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Portuguese_BZ/Zi8DatPTBZs.z8d:system/usr/zi/Portuguese_BZ/Zi8DatPTBZs.z8d \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/zi/Portuguese_EU/Zi8DatPTEUs.z8d:system/usr/zi/Portuguese_EU/Zi8DatPTEUs.z8d \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \\
-    device/__VENDOR__/__DEVICE__/prebuilt/usr/keylayout/robyn_keypad.kl:system/usr/keylayout/robyn_keypad.kl \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keylayout/systemconnector.kl:system/usr/keylayout/systemconnector.kl \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \\

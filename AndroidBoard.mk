@@ -12,44 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH := device/semc/robyn/
 
+#
+# Boot files
+#
+#ifeq ($(TARGET_PREBUILT_KERNEL),)
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+#endif
 
-file := $(TARGET_OUT_KEYLAYOUT)/robyn-keypad.kl
+file := $(INSTALLED_KERNEL_TARGET)
 ALL_PREBUILT += $(file)
-LOCAL_MODULE_TAGS := optional
-$(file) : $(LOCAL_PATH)/robyn-keypad.kl | $(ACP)
+$(file): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
 
-#file := $(TARGET_ROOT_OUT)/init.robyn.rc
-#ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/init.robyn.rc | $(ACP)
-#	$(transform-prebuilt-to-target)
 
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := robyn-keypad.kcm
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_KEY_CHAR_MAP)
-        
-# Hero generic
 
-file := $(TARGET_OUT_KEYLAYOUT)/h2w_headset.kl
-ALL_PREBUILT += $(file)
-LOCAL_MODULE_TAGS := optional
-$(file) : $(LOCAL_PATH)/h2w_headset.kl | $(ACP)
-	$(transform-prebuilt-to-target)
 
-#include $(CLEAR_VARS)
-#LOCAL_MODULE_CLASS := ETC
-#LOCAL_MODULE := vold.fstab
-#LOCAL_SRC_FILES := $(LOCAL_MODULE)
-#LOCAL_MODULE_TAGS := optional
-#include $(BUILD_PREBUILT)
-
-# the system properties for each device, loaded by init
-#file := $(TARGET_OUT)/build.robyn.prop
-#ALL_PREBUILT += $(file)
-#$(file) : $(LOCAL_PATH)/build.robyn.prop | $(ACP)
-#	$(transform-prebuilt-to-target)
-
--include vendor/semc/robyn/AndroidBoardVendor.mk

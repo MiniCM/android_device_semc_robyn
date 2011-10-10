@@ -23,7 +23,7 @@ BOARD_USES_GENERIC_AUDIO := false
 #BOARD_HAVE_FM_RADIO := true
 #BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
-BOARD_EGL_CFG := device/semc/robyn/egl.cfg
+BOARD_EGL_CFG := device/semc/robyn/prebuilt/egl.cfg
 BOARD_NO_RGBX_8888 := true
 TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
@@ -37,7 +37,7 @@ WIFI_FIRMWARE_LOADER := wlan_loader
 WIFI_EXT_MODULE_PATH := /system/lib/modules/sdio.ko
 WIFI_EXT_MODULE_NAME := sdio
 
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := true
@@ -52,7 +52,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 TARGET_BOOTLOADER_BOARD_NAME := robyn
-TARGET_OTA_ASSERT_DEVICE := robyn
+TARGET_OTA_ASSERT_DEVICE := E10i,E10a,robyn
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BOOTLOADER_BOARD_NAME=robyn
 
 WITH_JIT := true
@@ -87,7 +87,8 @@ BUILD_WITHOUT_PV := true
 
 WITH_DEXPREOPT := true
 
-TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
+BOARD_CUSTOM_BOOTIMG_MK := device/semc/msm7x27-common/custombootimg.mk
+TARGET_RECOVERY_PRE_COMMAND := "mkdir /cache/recovery;touch /cache/recovery/boot;sync;"
 BOARD_HAS_BOOT_RECOVERY := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -105,3 +106,6 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/msm7x27-common/releaset
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/semc/robyn/vibrator.c
+
+# Prelinks
+PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/device/semc/robyn/prelink-linux-arm-robyn.map
