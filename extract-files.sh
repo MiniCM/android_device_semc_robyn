@@ -72,12 +72,14 @@ fi
     ${ACTION}/system/etc/semc/chargemon/anim8.rle ../../../vendor/$VENDOR/$DEVICE/proprietary/anim8.rle
 
 ## FM Radio and ANT
-    ${ACTION}/system/etc/permissions/com.dsi.ant.antradio_library.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.dsi.ant.antradio_library.xml
     ${ACTION}/system/etc/permissions/com.sonyericsson.smfmf.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.smfmf.xml
     ${ACTION}/system/etc/permissions/com.sonyericsson.suquashi.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.sonyericsson.suquashi.xml
     ${ACTION}/system/etc/permissions/com.ti.fm.fmreceiverif.xml ../../../vendor/$VENDOR/$DEVICE/proprietary/com.ti.fm.fmreceiverif.xml
     ${ACTION}/system/lib/libfm_stack.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfm_stack.so
     ${ACTION}/system/lib/libfmrx.so ../../../vendor/$VENDOR/$DEVICE/proprietary/libfmrx.so
+    ${ACTION}/system/etc/permissions/com.dsi.ant.antradio_library.xml ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/framework/com.dsi.ant.antradio_library.jar ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/lib/libanthal.so ../../../vendor/$VENDOR/$DEVICE/proprietary
     
 ## HW and sensors
     ${ACTION}/system/etc/sensors.conf ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.conf
@@ -211,12 +213,16 @@ PRODUCT_COPY_FILES += \\
       
 ## FM Radio and ANT
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \\
     vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.smfmf.xml:system/etc/permissions/com.sonyericsson.smfmf.xml \\
     vendor/__VENDOR__/__DEVICE__/proprietary/com.sonyericsson.suquashi.xml:system/etc/permissions/com.sonyericsson.suquashi.xml \\
     vendor/__VENDOR__/__DEVICE__/proprietary/com.ti.fm.fmreceiverif.xml:system/etc/permissions/com.ti.fm.fmreceiverif.xml \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libfm_stack.so:system/lib/libfm_stack.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/libfmrx.so:system/lib/libfmrx.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/libfmrx.so:system/lib/libfmrx.so \\
+    device/__VENDOR__/__DEVICE__/prebuilt/AntHalService.apk:system/app/AntHalService.apk \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/com.dsi.ant.antradio_library.jar:system/framework/com.dsi.ant.antradio_library.jar \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libanthal.so:system/lib/libanthal.so
+
   
 ## HW and sensors
 PRODUCT_COPY_FILES += \\
@@ -296,7 +302,6 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/Radio.apk:system/app/Radio.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/SuquashiInputMethod.apk:system/app/SuquashiInputMethod.apk \\
     device/__VENDOR__/__DEVICE__/prebuilt/SystemConnector.apk:system/app/SystemConnector.apk \\
-    device/__VENDOR__/__DEVICE__/prebuilt/com.dsi.ant.antradio_library.jar:system/framework/com.dsi.ant.antradio_library.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/com.sonyericsson.suquashi.jar:system/framework/com.sonyericsson.suquashi.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \\
     device/__VENDOR__/__DEVICE__/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar \\
@@ -396,6 +401,11 @@ PRODUCT_COPY_FILES += \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/isl.xml:system/usr/keyboard-config/languages/isl.xml \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/bul.xml:system/usr/keyboard-config/languages/bul.xml \\
     device/__VENDOR__/__DEVICE__/prebuilt/usr/keyboard-config/languages/dan.xml:system/usr/keyboard-config/languages/dan.xml
+
+## Themes
+PRODUCT_COPY_FILES += \\
+    device/__VENDOR__/__DEVICE__/prebuilt/MiniCM7.apk:system/app/MiniCM7.apk \\
+    device/__VENDOR__/__DEVICE__/prebuilt/OrangeHaze.apk:system/app/OrangeHaze.apk
 
 ## Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \\

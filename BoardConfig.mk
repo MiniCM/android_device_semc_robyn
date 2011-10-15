@@ -40,8 +40,8 @@ WIFI_EXT_MODULE_NAME := sdio
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := true
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-TARGET_USE_CUSTOM_VIBRATOR_FILE_PATH := /sys/devices/platform/msm_pmic_vibrator/enable
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+#BOARD_CUSTOM_BLUEDROID := ../../../device/semc/robyn/bluedroid.c
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
@@ -102,9 +102,6 @@ BOARD_USE_SCREENCAP := true
 
 # A custom ota package maker for a device without a boot partition
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/msm7x27-common/releasetools/semc_ota_from_target_files
-
-# Vibrator
-BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/semc/robyn/vibrator.c
 
 # Prelinks
 PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/device/semc/robyn/prelink-linux-arm-robyn.map

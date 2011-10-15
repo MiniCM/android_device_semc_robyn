@@ -158,3 +158,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Workaround for usb disconnect kickback
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.tethering.kb_disconnect=1
+
+# Theme Selection
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.themeId=MiniCM7 \
+    persist.sys.themePackageName=com.darkdog.theme.minicm7
+
