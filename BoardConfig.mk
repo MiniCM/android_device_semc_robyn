@@ -41,7 +41,7 @@ TARGET_USES_OLD_LIBSENSORS_HAL:=true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := true
 #BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-#BOARD_CUSTOM_BLUEDROID := ../../../device/semc/robyn/bluedroid.c
+BOARD_CUSTOM_BLUEDROID := ../../../device/semc/robyn/bluedroid.c
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
