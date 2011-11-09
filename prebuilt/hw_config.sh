@@ -10,7 +10,7 @@ echo 32768 > $dev/br::rate::down # 8, 1024, 2048, 4096, 8192, 16384, 32768, 6553
 echo 254 > $dev/br::limit       # 0 - 255
 echo 22.5 > $dev/br::fsc        # 5.0, 8.5, 12.0, 15.5, 19.0, 22.5, 26.0, 29.5
 echo 4,16,64,250 > $dev/curve::borders
-echo 47,75,114,164,226 > $dev/curve::targets
+echo 50,50,50,50,50 > $dev/curve::targets
 echo high-z > $dev/als::r1      # high-z, 9360, 5560 .. 677.6 (see chip mnual)
 echo high-z > $dev/als::r2      # high-z, 9360, 5560 .. 677.6 (see chip mnual)
 echo 128 > $dev/als::avg-t     # 32, 63, 128, 256, 512, 1024, 2048, 4096
