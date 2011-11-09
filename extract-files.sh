@@ -87,7 +87,6 @@ fi
     ${ACTION}/system/lib/hw/gralloc.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.msm7k.so
     ${ACTION}/system/lib/hw/gralloc.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/gralloc.default.so
     ${ACTION}/system/lib/hw/copybit.msm7k.so ../../../vendor/$VENDOR/$DEVICE/proprietary/copybit.msm7k.so
-    ${ACTION}/system/lib/hw/sensors.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/sensors.default.so
     ${ACTION}/system/lib/hw/hal_seport.default.so ../../../vendor/$VENDOR/$DEVICE/proprietary/hal_seport.default.so
     ${ACTION}/system/lib/libsystemconnector/libuinputdevicejni.so ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/lib/libsystemconnector_hal_jni.so ../../../vendor/$VENDOR/$DEVICE/proprietary
@@ -231,7 +230,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/gralloc.default.so:system/lib/hw/gralloc.default.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/copybit.msm7k.so:system/lib/hw/copybit.msm7k.so \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensors.default.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/hal_seport.default.so:system/lib/hw/hal_seport.default.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libuinputdevicejni.so:system/lib/libsystemconnector/libuinputdevicejni.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/libsystemconnector_hal_jni.so:system/lib/libsystemconnector_hal_jni.so
