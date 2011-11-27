@@ -23,9 +23,10 @@ echo  35 > $dev/led_off_ms       # sensor LED off time in ms
 
 echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold
-echo 40 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
-echo 400000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
+echo 30 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
+echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
 echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 600000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
 # Flash LED configuration
 dev=/sys/devices/platform/msm_pmic_flash_led
@@ -34,38 +35,7 @@ echo 4700 > $dev/spotlight::boost_mv # spotlight boost voltage
 echo 480 > $dev/cmaflash::current_ma # camera flash current
 echo 5000 > $dev/cmaflash::boost_mv # camera flash  voltage
 
-# Overclocking
-echo x25 > /proc/x8oc
-sleep 2
-echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold
-echo 30 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/down_differential
-echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
-echo 122880 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-echo 710400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-
-# Needed by radio
-mkdir /data/radio
-chmod 0777 /data/radio
-chmod 0777 /dev/msm*
-chmod 0777 /dev/pmem_adsp
-chmod 0777 /dev/msm_camera/*
-chmod 0777 /dev/graphics/*
-chmod 0777 /dev/oncrpc/*
-chmod 0777 /sys/class/semc/rgb_led/*
-chmod 0666 /sys/devices/platform/i2c-adapter/i2c-0/0-0036/mode
-chmod 0666 /sys/devices/platform/i2c-adapter/i2c-0/0-0036/br::intensity
-
-# Symlinks for compass
-ln -s /dev/akm8973_aot /dev/akm8975_aot
-ln -s /dev/akm8973_daemon /dev/akm8975_daemon
-
-# /sdcard legacy support
-mkdir /sdcard
-ln -s /mnt/sdcard /sdcard
-
 mount -o rw,remount -t yaffs2 /dev/block/mtdblock0 /system
 chmod u+s /system/bin/charger
 mount -o ro,remount -t yaffs2 /dev/block/mtdblock0 /system
 rm -rf /data/local/download/*
-
