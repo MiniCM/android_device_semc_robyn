@@ -15,7 +15,6 @@
     <!-- Whether or not to display search button settings -->
     <bool name="has_search_button">false</bool>
 
-    <!-- Undervolting and overclocking kernel modules -->
+    <!-- Undervolting kernel module -->
     <string name="undervolting_module">x10miniuv.ko</string>
-    <string name="overclocking_module">x10minioc.ko</string>
 </resources>
