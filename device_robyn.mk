@@ -51,7 +51,9 @@ PRODUCT_PACKAGES += \
 # Extra packages
 PRODUCT_PACKAGES += \
     Torch \
-    ADWLauncher
+    ADWLauncher \
+    Cyanbread \
+    Androidian
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -175,13 +177,14 @@ PRODUCT_COPY_FILES += \
     device/semc/robyn/prebuilt/hw_config.sh:system/etc/hw_config.sh \
     device/semc/robyn/prebuilt/FmRxService.apk:system/app/FmRxService.apk \
     device/semc/robyn/prebuilt/Radio.apk:system/app/Radio.apk \
+    device/semc/robyn/prebuilt/SuquashiInputMethod.apk:system/app/SuquashiInputMethod.apk \
     device/semc/robyn/prebuilt/SystemConnector.apk:system/app/SystemConnector.apk \
     device/semc/robyn/prebuilt/com.sonyericsson.suquashi.jar:system/framework/com.sonyericsson.suquashi.jar \
     device/semc/robyn/prebuilt/fmreceiverif.jar:system/framework/fmreceiverif.jar \
     device/semc/robyn/prebuilt/SemcSmfmf.jar:system/framework/SemcSmfmf.jar \
     device/semc/robyn/prebuilt/vold.fstab:system/etc/vold.fstab \
     device/semc/robyn/placeholder:system/lib/modules/.placeholder
-   
+
 ## Themes
 PRODUCT_COPY_FILES += \
     device/semc/robyn/prebuilt/MiniCM7.apk:system/app/MiniCM7.apk \
@@ -194,7 +197,8 @@ PRODUCT_COPY_FILES += \
     device/semc/robyn/prebuilt/10apps2sd:system/etc/init.d/10apps2sd \
     device/semc/robyn/prebuilt/05mountext:system/etc/init.d/05mountext \
     device/semc/robyn/prebuilt/04modules:system/etc/init.d/04modules \
-    device/semc/robyn/prebuilt/06minicm:system/etc/init.d/06minicm
+    device/semc/robyn/prebuilt/06minicm:system/etc/init.d/06minicm \
+    device/semc/shakira/prebuilt/zipalign:system/xbin/zipalign
     
 ## Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \
