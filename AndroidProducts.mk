@@ -26,4 +26,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_shakira.mk
+    $(LOCAL_DIR)/device_robyn.mk

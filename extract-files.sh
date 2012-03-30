@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VENDOR=semc
-DEVICE=shakira
+DEVICE=robyn
 rm -rf ../../../vendor/$VENDOR/$DEVICE/
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary
 if [ $# -ne 1 ]
@@ -18,8 +18,8 @@ fi
     ${ACTION}/system/etc/01_qcomm_omx.cfg ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/bin/nvimport ../../../vendor/$VENDOR/$DEVICE/proprietary
     ${ACTION}/system/lib/libZiEngine.so ../../../vendor/$VENDOR/$DEVICE/proprietary
-    ${ACTION}/system/usr/keylayout/shakira_keypad.kl ../../../vendor/$VENDOR/$DEVICE/proprietary
-    ${ACTION}/system/usr/keychars/shakira_keypad.kcm.bin ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/usr/keylayout/robyn_keypad.kl ../../../vendor/$VENDOR/$DEVICE/proprietary
+    ${ACTION}/system/usr/keychars/robyn_keypad.kcm.bin ../../../vendor/$VENDOR/$DEVICE/proprietary
 
 ## RIL related stuff
     ${ACTION}/system/lib/libril.so ../../../vendor/$VENDOR/$DEVICE/proprietary
@@ -248,8 +248,9 @@ PRODUCT_COPY_FILES += \\
 
 ## Keyboard layouts and T9
 PRODUCT_COPY_FILES += \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/shakira_keypad.kl:system/usr/keylayout/shakira_keypad.kl \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/shakira_keypad.kcm.bin:system/usr/keychars/shakira_keypad.kcm.bin \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/robyn_keypad.kl:system/usr/keylayout/robyn_keypad.kl \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/robyn_keypad.kcm.bin:system/usr/keychars/robyn_keypad.kcm.bin \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/libZiEngine.so:system/lib/libZiEngine.so \\
 
 EOF
 

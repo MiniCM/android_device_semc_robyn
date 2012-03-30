@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VENDOR=semc
-DEVICE=shakira
+DEVICE=robyn
 
 mkdir -p ../../../vendor/$VENDOR/$DEVICE
 
