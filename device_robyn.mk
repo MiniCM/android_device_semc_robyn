@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 # proprietary side of the device
-$(call inherit-product-if-exists, vendor/semc/robyn/device_robyn-vendor.mk)
+$(call inherit-product-if-exists, vendor/semc/robyn/robyn-vendor.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := E10i
@@ -45,8 +45,7 @@ PRODUCT_AAPT_PREF_CONFIG := mdpi
 
 # Extra prebuilt binaries
 PRODUCT_COPY_FILES += \
-    device/semc/robyn/prebuilt/hw_config.sh:system/etc/hw_config.sh \
-    vendor/semc/robyn/proprietary/libcamera.so:obj/lib/libcamera.so
+    device/semc/robyn/prebuilt/hw_config.sh:system/etc/hw_config.sh
 
 # Wifi firmware
 PRODUCT_COPY_FILES += \
