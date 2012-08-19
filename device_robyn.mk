@@ -29,10 +29,7 @@ DEVICE_PACKAGE_OVERLAYS := device/semc/robyn/overlay
 
 -include device/semc/msm7x27-common/msm7x27.mk
 
-# Sensors lights
 PRODUCT_PACKAGES += \
-    sensors.robyn \
-    lights.robyn \
     Torch
 
 # media configuration xml file
