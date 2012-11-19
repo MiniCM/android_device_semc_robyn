@@ -24,19 +24,16 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
-# application settings that are stored in resourced.    
-DEVICE_PACKAGE_OVERLAYS := device/semc/robyn/overlay
+# application settings that are stored in resourced.
+DEVICE_PACKAGE_OVERLAYS := device/semc/msm7x27-common/overlay_ldpi
+DEVICE_PACKAGE_OVERLAYS += device/semc/robyn/overlay
 
 -include device/semc/msm7x27-common/msm7x27.mk
 
 PRODUCT_PACKAGES += \
     Torch
 
-# media configuration xml file
-PRODUCT_COPY_FILES += \
-    device/semc/robyn/prebuilt/media_profiles.xml:/system/etc/media_profiles.xml
-
-# Robyn uses low-density artwork where available
+# Use low-density artwork where available
 PRODUCT_AAPT_CONFIG := normal ldpi mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
 
