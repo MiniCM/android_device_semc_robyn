@@ -39,8 +39,7 @@ PRODUCT_AAPT_PREF_CONFIG := mdpi
 
 # Wifi firmware
 PRODUCT_COPY_FILES += \
-    device/semc/robyn/prebuilt/tiwlan.ini:system/etc/wifi/tiwlan.ini \
-    device/semc/robyn/prebuilt/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini
+    device/semc/robyn/prebuilt/tiwlan.ini:system/etc/tiwlan.ini
 
 # Themes
 PRODUCT_COPY_FILES += \
